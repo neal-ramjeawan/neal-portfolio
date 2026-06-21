@@ -47,6 +47,8 @@ export default function Home() {
           <div>🪟 Windows Server</div>
           <div>🧠 Active Directory</div>
           <div>⚙ Terraform</div>
+          <div>🐍 Python</div>
+          <div>⚡ Powershell/Bash</div>
           <div>🐳 Docker</div>
           <div>🔁 CI/CD</div>
           <div>📦 Kubernetes</div>
