@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="max-w-5xl mx-auto px-6 py-6 flex justify-between text-gray-300">
       
       <div className="font-bold text-white">
-        Neal DevOps
+        Neal Ramjeawan
       </div>
 
       <div className="flex gap-6">

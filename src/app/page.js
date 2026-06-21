@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
 
         <p className="text-xl text-gray-300 mt-3">
-          Cloud Engineer • DevOps • Systems Engineering
+          Platform Engineer • DevOps • Systems Engineering
         </p>
 
         <p className="text-gray-400 mt-6 max-w-2xl">
@@ -50,7 +50,8 @@ export default function Home() {
           <div>🐳 Docker</div>
           <div>🔁 CI/CD</div>
           <div>📦 Kubernetes</div>
-          <div>🔐 IAM</div>
+          <div>🔐 Security</div>
+          <div>📊 Monitoring</div>
         </div>
 
       </section>
@@ -106,11 +107,11 @@ export default function Home() {
 
           <div>
             <p className="text-2xl font-bold text-white">6+</p>
-            <p>Years IT Systems Experience</p>
+            <p>Years of Professional Engineering Experience</p>
           </div>
 
           <div>
-            <p className="text-2xl font-bold text-white">10+</p>
+            <p className="text-2xl font-bold text-white">100+</p>
             <p>Infrastructure Projects</p>
           </div>
 
@@ -126,7 +127,7 @@ export default function Home() {
         </p>
 
         <p className="text-gray-400 mt-4">
-          your.email@example.com
+          neal.email@email.com
         </p>
 
       </section>
