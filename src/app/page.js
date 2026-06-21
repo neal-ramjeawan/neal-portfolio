@@ -4,7 +4,10 @@ export default function Home() {
 
       {/* HERO */}
       <section className="max-w-5xl mx-auto px-6 py-20">
-        <p className="text-green-400 font-mono">> whoami</p>
+
+        <p className="text-green-400 font-mono">
+          {">"} whoami
+        </p>
 
         <h1 className="text-5xl font-bold mt-4">
           Neal Ramjeawan
@@ -27,11 +30,15 @@ export default function Home() {
             Download CV
           </a>
         </div>
+
       </section>
 
       {/* SKILLS */}
       <section className="max-w-5xl mx-auto px-6 py-10 border-t border-gray-800">
-        <p className="text-green-400 font-mono">> skills --list</p>
+
+        <p className="text-green-400 font-mono">
+          {">"} skills --list
+        </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-gray-300">
           <div>☁ AWS</div>
@@ -45,11 +52,15 @@ export default function Home() {
           <div>📦 Kubernetes</div>
           <div>🔐 IAM</div>
         </div>
+
       </section>
 
       {/* PROJECTS */}
       <section className="max-w-5xl mx-auto px-6 py-10 border-t border-gray-800">
-        <p className="text-green-400 font-mono">> ls projects/</p>
+
+        <p className="text-green-400 font-mono">
+          {">"} ls projects/
+        </p>
 
         <div className="mt-6 space-y-6">
 
@@ -81,13 +92,18 @@ export default function Home() {
           </div>
 
         </div>
+
       </section>
 
-      {/* EXPERIENCE STYLE SECTION */}
+      {/* METRICS */}
       <section className="max-w-5xl mx-auto px-6 py-10 border-t border-gray-800">
-        <p className="text-green-400 font-mono">> system status</p>
+
+        <p className="text-green-400 font-mono">
+          {">"} system status
+        </p>
 
         <div className="mt-6 grid grid-cols-2 gap-6 text-gray-300">
+
           <div>
             <p className="text-2xl font-bold text-white">6+</p>
             <p>Years IT Systems Experience</p>
@@ -97,16 +113,22 @@ export default function Home() {
             <p className="text-2xl font-bold text-white">10+</p>
             <p>Infrastructure Projects</p>
           </div>
+
         </div>
+
       </section>
 
       {/* CONTACT */}
       <section className="max-w-5xl mx-auto px-6 py-10 border-t border-gray-800 text-center">
-        <p className="text-green-400 font-mono">> contact --init</p>
+
+        <p className="text-green-400 font-mono">
+          {">"} contact --init
+        </p>
 
         <p className="text-gray-400 mt-4">
-          neal.email@email.com
+          your.email@example.com
         </p>
+
       </section>
 
     </main>
