@@ -1,20 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0d12;
-  --bg-elevated: #0d1117;
-  --surface: #12161d;
-  --surface-hover: #161b23;
-  --border: #212832;
-  --border-strong: #2c3542;
-  --text: #e7eaf0;
-  --text-dim: #94a0b0;
-  --text-faint: #566073;
-  --accent: #2fd6a1;
-  --accent-dim: #1b8464;
-  --accent-soft: rgba(47, 214, 161, 0.1);
-  --warn: #f0b23e;
-  --warn-soft: rgba(240, 178, 62, 0.1);
+  --bg: #222831;
+  --bg-elevated: #262c35;
+  --surface: #393e46;
+  --surface-hover: #454b54;
+  --border: #2e343d;
+  --border-strong: #4a505a;
+  --text: #eeeeee;
+  --text-dim: #a8acb0;
+  --text-faint: #767b82;
+  --accent: #00adb5;
+  --accent-dim: #00858c;
+  --accent-soft: rgba(0, 173, 181, 0.14);
 }
 
 @theme inline {
@@ -29,7 +27,6 @@
   --color-text-faint: var(--text-faint);
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
-  --color-warn: var(--warn);
   --font-mono: var(--font-jetbrains-mono);
   --font-sans: var(--font-inter);
 }
@@ -43,13 +40,23 @@ html {
 }
 
 body {
-  background: var(--bg);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+
   color: var(--text);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+
+  background-color: var(--bg);
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(148, 160, 176, 0.14) 1px, transparent 0);
-  background-size: 28px 28px;
-  background-attachment: fixed;
+    var(--grain),
+    radial-gradient(1000px 700px at 78% 15%, rgba(0, 173, 181, 0.1), transparent 65%),
+    radial-gradient(700px 500px at 8% 5%, rgba(0, 173, 181, 0.05), transparent 60%),
+    radial-gradient(650px 500px at 15% 65%, rgba(0, 173, 181, 0.04), transparent 60%),
+    radial-gradient(750px 550px at 92% 95%, rgba(0, 173, 181, 0.06), transparent 60%),
+    linear-gradient(165deg, #222831 0%, #262c35 45%, #1c2129 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: center, top left, top right, left center, bottom right, center;
+  background-size: 180px 180px, cover, cover, cover, cover, cover;
+  background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -63,7 +70,7 @@ body {
   }
 }
 
-/* Status dot with live pulse */
+/* Status dot with live pulse — used for "Operational" component indicators */
 .status-dot {
   position: relative;
   display: inline-block;
@@ -83,13 +90,6 @@ body {
   animation: status-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-.status-dot--warn {
-  background: var(--warn);
-}
-.status-dot--warn::after {
-  background: var(--warn);
-}
-
 @keyframes status-ping {
   0% {
     transform: scale(1);
@@ -101,14 +101,42 @@ body {
   }
 }
 
-/* Subtle top glow behind hero */
-.hero-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(600px 320px at 15% 0%, rgba(47, 214, 161, 0.10), transparent 60%),
-    radial-gradient(500px 280px at 85% 10%, rgba(240, 178, 62, 0.06), transparent 60%);
+@media (prefers-reduced-motion: reduce) {
+  .np-pulses {
+    display: none;
+  }
+}
+
+/* Page-load entrance sequence for the hero */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 1.1s ease-out both;
+}
+
+/* Slow "alive" breathing on the network graphic's cloud hub */
+@keyframes cloud-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.8; }
+}
+.np-cloud {
+  animation: cloud-breathe 5s ease-in-out infinite;
 }
 
 /* Focus visibility */
@@ -120,8 +148,8 @@ button:focus-visible {
 }
 
 ::selection {
-  background: var(--accent-dim);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--text);
 }
 
 /* Scrollbar (webkit) — quiet, on-brand */

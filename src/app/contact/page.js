@@ -33,7 +33,7 @@ export default function Contact() {
         Let&apos;s talk
       </h1>
       <p className="text-text-dim leading-relaxed mb-10">
-        Open to Cloud Engineer, DevOps, and SRE / Systems Engineer roles. The
+        Open to Cloud Platform Engineer &middot; DevOps &middot; SRE &middot; Systems Engineer roles. The
         fastest way to reach me is email.
       </p>
 

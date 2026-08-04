@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { skillGroups } from "../data/skills";
+import { skillIcons } from "../components/icons";
 
 export const metadata = {
   title: "About — Neal Ramjeawan",
@@ -63,12 +64,18 @@ export default function About() {
       <div className="mt-14">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">Focus areas</h2>
         <div className="grid sm:grid-cols-2 gap-3">
-          {skillGroups.map((group) => (
-            <div key={group.name} className="rounded-lg border border-border bg-surface p-4">
-              <p className="font-mono text-sm text-text mb-1">{group.name}</p>
-              <p className="text-xs text-text-dim">{group.items.join(" \u00b7 ")}</p>
-            </div>
-          ))}
+          {skillGroups.map((group) => {
+            const Icon = skillIcons[group.name];
+            return (
+              <div key={group.name} className="rounded-lg border border-border bg-surface p-4">
+                <div className="flex items-center gap-2 mb-1">
+                  {Icon && <Icon className="w-4 h-4 text-accent" />}
+                  <p className="font-mono text-sm text-text">{group.name}</p>
+                </div>
+                <p className="text-xs text-text-dim">{group.items.join(" \u00b7 ")}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
