@@ -1,7 +1,7 @@
 import { contact } from "../data/contact";
 
 export const metadata = {
-  title: "Contact — Neal Ramjeawan",
+  title: "Contact",
   description: "Get in touch with Neal Ramjeawan.",
 };
 
