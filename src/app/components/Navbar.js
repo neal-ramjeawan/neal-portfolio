@@ -19,7 +19,9 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-bg/85 backdrop-blur">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="status-dot" />
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent">
+            <span className="font-mono text-[11px] font-bold text-bg">NR</span>
+          </span>
           <span className="font-mono font-semibold text-text group-hover:text-accent transition-colors">
             Neal Ramjeawan
           </span>
