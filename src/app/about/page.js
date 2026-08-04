@@ -3,7 +3,7 @@ import { skillGroups } from "../data/skills";
 import { skillIcons } from "../components/icons";
 
 export const metadata = {
-  title: "About — Neal Ramjeawan",
+  title: "About",
   description:
     "Cloud, DevOps, and SRE engineer focused on infrastructure that's automated, observable, and tested against real failure.",
 };

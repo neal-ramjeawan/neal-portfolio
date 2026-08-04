@@ -20,7 +20,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border">
         <NetworkGraphic
-          className="animate-fade-in [animation-delay:0.3s] pointer-events-none hidden lg:block absolute top-1/2 right-[-40px] -translate-y-1/2 w-[520px] h-[520px]"
+          className="animate-fade-in [animation-delay:0.3s] pointer-events-none absolute opacity-25 sm:opacity-35 lg:opacity-100 w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[520px] lg:h-[520px] bottom-[-70px] right-[-70px] lg:bottom-auto lg:top-1/2 lg:right-[-40px] lg:-translate-y-1/2"
         />
         <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 sm:py-28">
           <h1 className="animate-fade-up font-mono text-4xl sm:text-6xl font-bold tracking-tight text-text">
@@ -32,9 +32,15 @@ export default function Home() {
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">
-            I design, automate, and stress-test infrastructure across cloud and
-            hybrid environments &mdash; then prove it holds up. Every project below
-            has been built, broken on purpose, and fixed before it went on this page.
+            I design, build, and automate secure cloud platforms across cloud and hybrid
+            environments — with a focus on reliability, scalability, and operational
+            excellence. Every project below has been engineered, failure-tested,
+            improved, and documented as a complete delivery journey.
+          </p>
+
+          <p className="animate-fade-up [animation-delay:0.22s] mt-4 max-w-2xl text-text-dim leading-relaxed">
+            I am a hands-on builder who enjoys understanding how systems work,
+            simplifying complexity, and turning ideas into reliable solutions.
           </p>
 
           <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-3">

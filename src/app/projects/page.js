@@ -2,7 +2,7 @@ import ProjectCard from "../components/ProjectCard";
 import { projects } from "../data/projects";
 
 export const metadata = {
-  title: "Projects — Neal Ramjeawan",
+  title: "Projects",
   description:
     "The full deployment log: cloud, DevOps, and SRE portfolio projects, with the problem, the response, and the result for each.",
 };

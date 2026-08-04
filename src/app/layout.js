@@ -1,7 +1,9 @@
 import { JetBrains_Mono, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { site } from "./data/site";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -16,9 +18,24 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Neal Ramjeawan — Cloud / DevOps / SRE Engineer",
-  description:
-    "Cloud, DevOps, and SRE engineer. Portfolio of hands-on infrastructure projects: Kubernetes, IaC, identity, observability, and automation, built and stress-tested end to end.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.title,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  openGraph: {
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -28,6 +45,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
