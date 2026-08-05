@@ -139,6 +139,21 @@ body {
   animation: cloud-breathe 5s ease-in-out infinite;
 }
 
+/* Shared hover lift for cards (project cards, skill cards, principle cards) */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.45);
+}
+
+/* Soft gradient divider between sections, replaces hard border lines */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
+}
+
 /* Focus visibility */
 a:focus-visible,
 button:focus-visible {

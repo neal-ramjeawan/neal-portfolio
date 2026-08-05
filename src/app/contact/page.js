@@ -33,7 +33,7 @@ export default function Contact() {
         Let&apos;s talk
       </h1>
       <p className="text-text-dim leading-relaxed mb-10">
-        Open to Cloud Platform Engineer &middot; DevOps &middot; SRE &middot; Systems Engineer roles. The
+        Open to Cloud Engineer, DevOps, and SRE / Systems Engineer roles. The
         fastest way to reach me is email.
       </p>
 
@@ -42,7 +42,7 @@ export default function Contact() {
           <a
             key={c.label}
             href={c.href}
-            className="flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+            className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
           >
             <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
               {c.label}
@@ -55,7 +55,7 @@ export default function Contact() {
 
         <a
           href={contact.resumeHref}
-          className="flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+          className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
         >
           <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
             R&eacute;sum&eacute;

@@ -53,7 +53,7 @@ export default function About() {
         <h2 className="font-mono text-xl font-semibold text-text mb-6">How I work</h2>
         <div className="space-y-4">
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="rounded-lg border border-border bg-surface p-5">
+            <div key={p.title} className="card-hover rounded-lg border border-border bg-surface p-5">
               <h3 className="font-mono text-sm text-accent mb-2">{p.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{p.body}</p>
             </div>
@@ -67,7 +67,7 @@ export default function About() {
           {skillGroups.map((group) => {
             const Icon = skillIcons[group.name];
             return (
-              <div key={group.name} className="rounded-lg border border-border bg-surface p-4">
+              <div key={group.name} className="card-hover rounded-lg border border-border bg-surface p-4">
                 <div className="flex items-center gap-2 mb-1">
                   {Icon && <Icon className="w-4 h-4 text-accent" />}
                   <p className="font-mono text-sm text-text">{group.name}</p>

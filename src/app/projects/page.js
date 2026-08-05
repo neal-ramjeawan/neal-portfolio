@@ -26,7 +26,7 @@ export default function Projects() {
 
       <div className="space-y-6">
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <ProjectCard key={project.slug} project={project} expanded={project.featured} />
         ))}
       </div>
     </main>
