@@ -18,7 +18,6 @@ export const projects = [
       "Chaos-tested it myself: random pod kills and a 300-request rolling update both completed with zero failed requests, and node drains re-targeted traffic cleanly. Wrote up the real bugs hit along the way in a full case-study report.",
     stack: ["Kubernetes", "Helm", "Argo CD", "PostgreSQL", "cert-manager", "Trivy", "CodeQL", "GitHub Actions"],
     repo: "neal-ramjeawan/legacy-bank-ha-migration",
-    diagram: "bankMigration",
   },
   {
     slug: "greendale-keystone",
@@ -33,7 +32,6 @@ export const projects = [
       "All seven stack profiles run end to end, and the password-reset workflow has been tested start to finish against a live AD account with a verifiable audit trail. CI runs Compose validation, YAML lint, and secret scanning on every push.",
     stack: ["Active Directory", "HashiCorp Vault", "Prometheus", "Grafana", "Loki", "Terraform", "Ansible", "Docker Compose"],
     repo: "neal-ramjeawan/greendale-keystone",
-    diagram: "greendaleKeystone",
   },
   {
     slug: "patch-compliance-dashboard",
@@ -48,7 +46,6 @@ export const projects = [
       "A fully serverless, pay-per-event compliance dashboard, pushed to GitHub with passing CI (unit tests, ruff, terraform fmt) and a recruiter-facing README and case study.",
     stack: ["AWS Systems Manager", "Lambda", "EventBridge", "DynamoDB", "Streamlit", "Terraform"],
     repo: "neal-ramjeawan/patch-compliance-dashboard",
-    diagram: "patchCompliance",
   },
   {
     slug: "awx-ansible-lab",

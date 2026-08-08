@@ -54,7 +54,7 @@ export default function About() {
         <div className="space-y-4">
           {PRINCIPLES.map((p) => (
             <div key={p.title} className="card-hover rounded-lg border border-border bg-surface p-5">
-              <h3 className="font-mono text-sm text-accent mb-2">{p.title}</h3>
+              <h3 className="font-mono text-sm text-accent-warm mb-2">{p.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{p.body}</p>
             </div>
           ))}
@@ -69,7 +69,7 @@ export default function About() {
             return (
               <div key={group.name} className="card-hover rounded-lg border border-border bg-surface p-4">
                 <div className="flex items-center gap-2 mb-1">
-                  {Icon && <Icon className="w-4 h-4 text-accent" />}
+                  {Icon && <Icon className="w-4 h-4 text-accent-warm" />}
                   <p className="font-mono text-sm text-text">{group.name}</p>
                 </div>
                 <p className="text-xs text-text-dim">{group.items.join(" \u00b7 ")}</p>
@@ -82,7 +82,7 @@ export default function About() {
       <div className="mt-14 flex flex-wrap gap-3">
         <Link
           href="/projects"
-          className="rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+          className="rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
         >
           View the deployment log
         </Link>

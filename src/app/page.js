@@ -40,15 +40,14 @@ export default function Home() {
           </p>
 
           <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-3">
-            <a
+          <a
               href={contact.resumeHref}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
             >
               <DownloadIcon className="w-4 h-4" />
               Download r&eacute;sum&eacute;
             </a>
             <a
-            
               href={contact.github}
               className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
             >
@@ -86,15 +85,15 @@ export default function Home() {
               return (
                 <div
                   key={group.name}
-                  className="card-hover rounded-lg border border-border bg-surface p-5"
+                  className="card-hover rounded-lg border border-accent-warm/25 bg-surface p-5 shadow-[0_0_40px_-20px_rgba(242,184,75,0.35)]"
                 >
                   <div className="flex items-center justify-between gap-3 mb-3">
                     <div className="flex items-center gap-2">
-                      {Icon && <Icon className="w-4 h-4 text-accent" />}
+                      {Icon && <Icon className="w-4 h-4 text-accent-warm" />}
                       <span className="status-dot" />
                       <span className="font-mono text-sm text-text">{group.name}</span>
                     </div>
-                    <span className="font-mono text-[11px] text-accent">Operational</span>
+                    <span className="font-mono text-[11px] text-accent-warm">Operational</span>
                   </div>
                   <p className="text-sm text-text-dim leading-relaxed">
                     {group.items.join(" \u00b7 ")}
@@ -126,7 +125,7 @@ export default function Home() {
           <div className="mt-10">
             <Link
               href="/projects"
-              className="font-mono text-sm text-accent hover:underline"
+              className="font-mono text-sm text-accent-warm hover:underline"
             >
               View the full deployment log &rarr;
             </Link>
@@ -166,9 +165,9 @@ export default function Home() {
             under real failure &mdash; let&apos;s talk.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a           
+            <a
               href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
             >
               <MailIcon className="w-4 h-4" />
               Email me
