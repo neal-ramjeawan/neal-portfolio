@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// Approximate start of professional engineering experience.
-// TODO(Neal): set this to your actual start date — the "6+ years" stat
-// on the old site implied roughly this, adjust as needed.
-const CAREER_START = new Date("2020-01-01T00:00:00Z");
+const CAREER_START = new Date("2019-12-01T00:00:00Z");
 
 function formatUptime(ms) {
   const totalSeconds = Math.floor(ms / 1000);
@@ -36,7 +33,7 @@ export default function UptimeCounter() {
       <p className="font-mono text-[11px] uppercase tracking-wide text-text-faint mb-1">
         In the field
       </p>
-      <p className="font-mono text-lg text-accent tabular-nums">
+      <p className="font-mono text-lg text-accent-warm tabular-nums">
         {display ?? "\u2014"}
       </p>
     </div>

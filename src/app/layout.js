@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollProgress from "./components/ScrollProgress";
 import { site } from "./data/site";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
       <body className="bg-bg text-text antialiased min-h-screen flex flex-col">
+        <ScrollProgress />
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />

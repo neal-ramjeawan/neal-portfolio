@@ -143,7 +143,7 @@ export const projects = [
     result:
       "A fast, responsive, self-contained site, ready to package into its own repo.",
     stack: ["React", "Vite", "Tailwind CSS"],
-    repo: "neal-ramjeawan/zwazo",
+    repo: "neal-ramjeawan/do-you-know-mauritius",
   },
 ];
 

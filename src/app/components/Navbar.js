@@ -19,11 +19,11 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-bg/85 backdrop-blur">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent">
+          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-warm">
             <span className="font-mono text-[11px] font-bold text-bg">NR</span>
           </span>
-          <span className="font-mono font-semibold text-text group-hover:text-accent transition-colors">
-            Neal Ramjeawan
+          <span className="font-mono font-semibold text-text group-hover:text-accent-warm transition-colors">
+            Ramjeawan
           </span>
         </Link>
 
@@ -37,7 +37,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3 py-1.5 rounded-md transition-colors ${
                   active
-                    ? "text-accent"
+                    ? "text-accent-warm"
                     : "text-text-dim hover:text-text"
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`py-2 ${active ? "text-accent" : "text-text-dim hover:text-text"}`}
+                className={`py-2 ${active ? "text-accent-warm" : "text-text-dim hover:text-text"}`}
               >
                 {link.label}
               </Link>

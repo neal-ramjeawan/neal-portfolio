@@ -29,11 +29,13 @@ export default function Contact() {
       <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
         Contact
       </p>
+
       <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-4">
         Let&apos;s talk
       </h1>
+
       <p className="text-text-dim leading-relaxed mb-10">
-        Open to Cloud Platform Engineer &middot; DevOps &middot; SRE &middot; Systems Engineer roles. The
+        Open to Cloud Engineer, DevOps, and SRE / Systems Engineer roles. The
         fastest way to reach me is email.
       </p>
 
@@ -42,12 +44,15 @@ export default function Contact() {
           <a
             key={c.label}
             href={c.href}
-            className="flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+            target={c.label === "Email" ? undefined : "_blank"}
+            rel={c.label === "Email" ? undefined : "noopener noreferrer"}
+            className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
           >
             <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
               {c.label}
             </span>
-            <span className="font-mono text-sm text-text group-hover:text-accent transition-colors">
+
+            <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
               {c.value}
             </span>
           </a>
@@ -55,12 +60,15 @@ export default function Contact() {
 
         <a
           href={contact.resumeHref}
-          className="flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
         >
           <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
             R&eacute;sum&eacute;
           </span>
-          <span className="font-mono text-sm text-text group-hover:text-accent transition-colors">
+
+          <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
             Download PDF
           </span>
         </a>
