@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #222831;
-  --bg-elevated: #262c35;
-  --surface: rgba(57, 62, 70, 0.7);
-  --surface-hover: rgba(69, 75, 84, 0.8);
-  --border: #2e343d;
-  --border-strong: #4a505a;
-  --text: #eeeeee;
-  --text-dim: #a8acb0;
-  --text-faint: #767b82;
+  --bg: #1c1815;
+  --bg-elevated: #201c18;
+  --surface: rgba(58, 51, 44, 0.72);
+  --surface-hover: rgba(69, 61, 52, 0.82);
+  --border: #2c2620;
+  --border-strong: #4a4136;
+  --text: #f1ece4;
+  --text-dim: #b6ab9c;
+  --text-faint: #968b7b;
   --accent: #00adb5;
   --accent-dim: #00858c;
   --accent-soft: rgba(0, 173, 181, 0.14);
@@ -56,7 +56,7 @@ body {
     radial-gradient(700px 500px at 8% 5%, rgba(242, 184, 75, 0.11), transparent 60%),
     radial-gradient(650px 500px at 15% 65%, rgba(0, 173, 181, 0.09), transparent 60%),
     radial-gradient(750px 550px at 92% 95%, rgba(242, 184, 75, 0.1), transparent 60%),
-    linear-gradient(165deg, #222831 0%, #262c35 45%, #1c2129 100%);
+    linear-gradient(165deg, #1c1815 0%, #201c18 45%, #171310 100%);
   background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   background-position: center, top left, top right, left center, bottom right, center;
   background-size: 180px 180px, cover, cover, cover, cover, cover;
