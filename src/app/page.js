@@ -30,7 +30,7 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            Cloud Engineer &middot; DevOps &middot; SRE / Systems Engineer
+            Cloud Platform Engineer &middot; DevOps &middot; SRE
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">

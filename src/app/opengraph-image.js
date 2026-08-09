@@ -48,7 +48,7 @@ export default async function Image() {
         </div>
 
         <div style={{ display: "flex", fontSize: 34, color: "#f2b84b", marginTop: 18 }}>
-          Cloud Engineer &middot; DevOps &middot; SRE / Systems Engineer
+          Cloud Platform Engineer &middot; DevOps &middot; SRE 
         </div>
 
         <div style={{ display: "flex", fontSize: 24, color: "#968b7b", marginTop: 30, maxWidth: 900 }}>

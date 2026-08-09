@@ -8,7 +8,6 @@ export default function Footer() {
           <span className="flex h-5 w-5 items-center justify-center rounded bg-accent-warm">
             <span className="text-[9px] font-bold text-bg">NR</span>
           </span>
-          <span>Neal Ramjeawan</span>
         </div>
         <div className="flex items-center gap-5">
           <Link href="/projects" className="hover:text-text-dim transition-colors">
