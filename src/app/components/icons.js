@@ -77,6 +77,17 @@ export function ServerIcon({ className }) {
   );
 }
 
+export function LockIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="5" y="10" width="14" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+      <circle cx="12" cy="15" r="1" />
+      <path d="M12 16v1.5" />
+    </svg>
+  );
+}
+
 export function DownloadIcon({ className }) {
   return (
     <svg {...base} className={className}>
@@ -111,4 +122,5 @@ export const skillIcons = {
   "CI/CD & Supply Chain": GitBranchIcon,
   Observability: PulseIcon,
   "Systems Administration": ServerIcon,
+  Security: LockIcon,
 };

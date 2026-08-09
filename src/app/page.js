@@ -44,11 +44,11 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 sm:py-28">
           <h1 className="animate-fade-up font-mono text-4xl sm:text-6xl font-bold tracking-tight text-text">
-            Neal Ramjeawan
+            Neal J. Ramjeawan
           </h1>
 
           <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            Cloud Engineer &middot; DevOps &middot; SRE / Systems Engineer
+            Cloud Platform &middot; DevOps &middot; Infrastructure
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">

@@ -5,7 +5,7 @@ import { skillIcons } from "../components/icons";
 export const metadata = {
   title: "About",
   description:
-    "Cloud, DevOps, and SRE engineer focused on infrastructure that's automated, observable, and tested against real failure.",
+    "Cloud, DevOps, and Infrastructure engineer focused on infrastructure that's automated, observable, and tested against real failure.",
 };
 
 const PRINCIPLES = [
@@ -30,15 +30,15 @@ export default function About() {
         About
       </p>
       <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-8">
-        Neal Ramjeawan
+        Neal J. Ramjeawan
       </h1>
 
       <div className="space-y-5 text-text-dim leading-relaxed">
         <p>
-          I&apos;m a cloud and platform engineer focused on building infrastructure
+          I&apos;m a Cloud Platform engineer focused on building infrastructure
           that stays up under real conditions &mdash; not just on the happy path.
           Most of what&apos;s on this site is self-directed: labs and platforms I
-          built specifically to prove out skills in cloud infrastructure, DevOps
+          built specifically to demonstrate skills in cloud infrastructure, DevOps
           practice, and site reliability engineering.
         </p>
         <p>
