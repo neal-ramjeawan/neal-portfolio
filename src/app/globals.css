@@ -74,37 +74,6 @@ body {
   }
 }
 
-/* Status dot with live pulse — used for "Operational" component indicators */
-.status-dot {
-  position: relative;
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--accent-warm);
-  flex-shrink: 0;
-}
-
-.status-dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  background: var(--accent-warm);
-  animation: status-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes status-ping {
-  0% {
-    transform: scale(1);
-    opacity: 0.55;
-  }
-  75%, 100% {
-    transform: scale(2.6);
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .np-pulses {
     display: none;
