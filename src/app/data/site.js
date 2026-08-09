@@ -5,7 +5,7 @@
 export const site = {
   url: "https://my-domain.com",
   name: "Neal Ramjeawan",
-  title: "Neal Ramjeawan — Cloud / DevOps / SRE Engineer",
+  title: "Neal Ramjeawan — Cloud Platform / DevOps / Infrastructure Engineer",
   description:
     "Cloud, DevOps, and Infrastructure engineer. Portfolio of hands-on infrastructure projects: Kubernetes, IaC, identity, observability, and automation, built and stress-tested end to end.",
 };
