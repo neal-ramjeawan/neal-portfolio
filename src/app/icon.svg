@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#00ADB5" />
+  <rect width="32" height="32" rx="7" fill="#F2B84B" />
   <text x="16" y="21" font-family="ui-monospace, monospace" font-size="12" font-weight="700"
-        fill="#222831" text-anchor="middle">NR</text>
+        fill="#1C1815" text-anchor="middle">NR</text>
 </svg>

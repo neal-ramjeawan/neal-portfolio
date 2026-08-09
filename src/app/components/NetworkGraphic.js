@@ -1,9 +1,3 @@
-// Decorative infrastructure-topology graphic for the hero: a cloud
-// hub with server/service nodes connected to it, and a few dots
-// animating along the connections like traffic on a network. Colors
-// read from the theme's CSS variables, so a future palette swap
-// needs no changes here.
-
 const CLOUD_CENTER = [380, 320]; // node index 5's old position — now the hub
 
 const NODES = [
@@ -31,13 +25,24 @@ const PULSES = [
   { path: "M200,340 L260,260 L380,320 L320,420 L200,340", dur: "9.5s", begin: "2.7s" },
 ];
 
+// Same path as CloudIcon in icons.js (24x24 viewBox), scaled and
+// centered into the diagram — so the hero graphic and the "Cloud &
+// IaC" card reference the same shape. Line-art (stroke + faint fill)
+// instead of a solid filled blob, to match the diagram's thin-line
+// weight rather than sitting on top of it like a sticker.
 function Cloud({ cx, cy }) {
   return (
-    <g className="np-cloud" fill="var(--accent)" opacity="0.65">
-      <rect x={cx - 45} y={cy - 6} width="90" height="34" rx="17" />
-      <circle cx={cx - 28} cy={cy - 12} r="20" />
-      <circle cx={cx} cy={cy - 22} r="25" />
-      <circle cx={cx + 28} cy={cy - 12} r="18" />
+    <g
+      className="np-cloud"
+      transform={`translate(${cx} ${cy}) scale(4.2) translate(-12 -12)`}
+      fill="var(--accent-warm)"
+      fillOpacity="0.14"
+      stroke="var(--accent-warm)"
+      strokeWidth="0.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6.5 19a4.5 4.5 0 0 1-.4-8.98 5.5 5.5 0 0 1 10.7-2.14A4.5 4.5 0 0 1 17.5 19h-11Z" />
     </g>
   );
 }
@@ -63,7 +68,7 @@ export default function NetworkGraphic({ className = "" }) {
         })}
       </g>
 
-      <g fill="var(--accent)">
+      <g fill="var(--accent-warm)">
         {NODES.map(([x, y], i) =>
           i === 5 ? null : <circle key={i} cx={x} cy={y} r="4" opacity="0.6" />
         )}
@@ -71,7 +76,7 @@ export default function NetworkGraphic({ className = "" }) {
 
       <Cloud cx={CLOUD_CENTER[0]} cy={CLOUD_CENTER[1]} />
 
-      <g className="np-pulses" fill="var(--accent)" filter="url(#np-glow)">
+      <g className="np-pulses" fill="var(--accent-warm)" filter="url(#np-glow)">
         {PULSES.map((p, i) => (
           <circle key={i} r="3.5" opacity="0.95">
             <animateMotion dur={p.dur} begin={p.begin} repeatCount="indefinite" path={p.path} />

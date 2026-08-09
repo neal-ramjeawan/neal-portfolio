@@ -22,9 +22,6 @@ export default function Navbar() {
           <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-warm">
             <span className="font-mono text-[11px] font-bold text-bg">NR</span>
           </span>
-          <span className="font-mono font-semibold text-text group-hover:text-accent-warm transition-colors">
-            Ramjeawan
-          </span>
         </Link>
 
         {/* Desktop nav */}

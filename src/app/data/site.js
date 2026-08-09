@@ -7,5 +7,5 @@ export const site = {
   name: "Neal Ramjeawan",
   title: "Neal Ramjeawan — Cloud / DevOps / SRE Engineer",
   description:
-    "Cloud, DevOps, and SRE engineer. Portfolio of hands-on infrastructure projects: Kubernetes, IaC, identity, observability, and automation, built and stress-tested end to end.",
+    "Cloud, DevOps, and Infrastructure engineer. Portfolio of hands-on infrastructure projects: Kubernetes, IaC, identity, observability, and automation, built and stress-tested end to end.",
 };
