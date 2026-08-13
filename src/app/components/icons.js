@@ -113,6 +113,22 @@ export function MailIcon({ className }) {
   );
 }
 
+export function ChevronLeftIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M15 6l-6 6 6 6" />
+    </svg>
+  );
+}
+
+export function ChevronRightIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
 // Maps each skills.js category name to its icon component.
 export const skillIcons = {
   "Cloud & IaC": CloudIcon,
