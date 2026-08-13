@@ -4,18 +4,19 @@ import ProjectCard from "./components/ProjectCard";
 import NetworkGraphic from "./components/NetworkGraphic";
 import Reveal from "./components/Reveal";
 import CountUp from "./components/CountUp";
-import {
-  DownloadIcon,
-  CodeIcon,
-  MailIcon,
-  skillIcons,
-} from "./components/icons";
+import ExperienceCarousel from "./components/ExperienceCarousel";
+import { DownloadIcon, CodeIcon, MailIcon, skillIcons } from "./components/icons";
 import { skillGroups } from "./data/skills";
 import { featuredProjects, projects } from "./data/projects";
+import { experience } from "./data/experience";
 import { contact } from "./data/contact";
 
 const METRICS = [
-  { to: 6, suffix: "+", label: "Years of hands-on engineering" },
+  {
+    to: 6,
+    suffix: "+",
+    label: "Years of hands-on engineering",
+  },
   {
     to: projects.length,
     suffix: "",
@@ -44,24 +45,23 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 sm:py-28">
           <h1 className="animate-fade-up font-mono text-4xl sm:text-6xl font-bold tracking-tight text-text">
-            Neal J. Ramjeawan
+            Neal Ramjeawan
           </h1>
 
           <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            Cloud Platform &middot; DevOps &middot; Infrastructure
+            Cloud Engineer &middot; DevOps &middot; SRE / Systems Engineer
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">
             I design, automate, and stress-test infrastructure across cloud and
-            hybrid environments &mdash; then prove it holds up. Every project below
-            has been built, broken on purpose, and fixed before it went on this page.
+            hybrid environments &mdash; then prove it holds up. Every project
+            below has been built, broken on purpose, and fixed before it went on
+            this page.
           </p>
 
           <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-3">
             <a
               href={contact.resumeHref}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
             >
               <DownloadIcon className="w-4 h-4" />
@@ -90,6 +90,32 @@ export default function Home() {
             <UptimeCounter />
           </div>
         </div>
+
+        <div className="section-divider" />
+      </section>
+
+      {/* EXPERIENCE */}
+      <section>
+        <Reveal className="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+          <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+            Experience
+          </p>
+
+          <h2 className="font-mono text-2xl font-semibold text-text mb-10">
+            Where I&apos;ve worked
+          </h2>
+
+          <ExperienceCarousel roles={experience} />
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/about#experience"
+              className="font-mono text-sm text-accent-warm hover:underline"
+            >
+              Full work history &rarr;
+            </Link>
+          </div>
+        </Reveal>
 
         <div className="section-divider" />
       </section>
@@ -173,18 +199,18 @@ export default function Home() {
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {METRICS.map((m) => (
-              <div key={m.label}>
+            {METRICS.map((metric) => (
+              <div key={metric.label}>
                 <p className="font-mono text-3xl font-bold text-text">
                   <CountUp
-                    to={m.to}
-                    prefix={m.prefix}
-                    suffix={m.suffix}
+                    to={metric.to}
+                    prefix={metric.prefix}
+                    suffix={metric.suffix}
                   />
                 </p>
 
                 <p className="mt-1 text-sm text-text-dim">
-                  {m.label}
+                  {metric.label}
                 </p>
               </div>
             ))}

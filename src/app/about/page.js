@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { skillGroups } from "../data/skills";
+import { experience } from "../data/experience";
 import { skillIcons } from "../components/icons";
+import ExperienceCard from "../components/ExperienceCard";
 
 export const metadata = {
   title: "About",
   description:
-    "Cloud, DevOps, and Infrastructure engineer focused on infrastructure that's automated, observable, and tested against real failure.",
+    "Cloud, DevOps, and SRE engineer focused on infrastructure that's automated, observable, and tested against real failure.",
 };
 
 const PRINCIPLES = [
@@ -30,15 +32,15 @@ export default function About() {
         About
       </p>
       <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-8">
-        Neal J. Ramjeawan
+        Neal Ramjeawan
       </h1>
 
       <div className="space-y-5 text-text-dim leading-relaxed">
         <p>
-          I&apos;m a Cloud Platform engineer focused on building infrastructure
+          I&apos;m a cloud and platform engineer focused on building infrastructure
           that stays up under real conditions &mdash; not just on the happy path.
           Most of what&apos;s on this site is self-directed: labs and platforms I
-          built specifically to demonstrate skills in cloud infrastructure, DevOps
+          built specifically to prove out skills in cloud infrastructure, DevOps
           practice, and site reliability engineering.
         </p>
         <p>
@@ -47,6 +49,18 @@ export default function About() {
           and the CI/CD and observability tooling that makes all of it operable
           rather than just deployable.
         </p>
+      </div>
+
+      <div id="experience" className="mt-14 scroll-mt-24">
+        <h2 className="font-mono text-xl font-semibold text-text mb-6">Experience</h2>
+        <div className="relative border-l border-border-strong ml-1.5 space-y-8">
+          {experience.map((role) => (
+            <div key={role.company} className="relative pl-8">
+              <span className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-accent-warm ring-4 ring-bg" />
+              <ExperienceCard role={role} />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mt-14">
