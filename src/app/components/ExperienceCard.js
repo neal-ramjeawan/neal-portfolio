@@ -1,8 +1,38 @@
+"use client";
+
+import { useRef } from "react";
+
 // Shared card content for one role — used by the About page's timeline
-// and the homepage carousel, so both stay in sync automatically.
+// and the homepage carousel, so both stay in sync automatically. Tilts
+// gently toward the cursor (max ~3.5deg) — subtle enough to feel alive
+// without distracting from the text.
 export default function ExperienceCard({ role }) {
+  const ref = useRef(null);
+
+  function handlePointerMove(e) {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.setProperty("--tilt-x", `${(py * -3.5).toFixed(2)}deg`);
+    el.style.setProperty("--tilt-y", `${(px * 3.5).toFixed(2)}deg`);
+  }
+
+  function handlePointerLeave() {
+    const el = ref.current;
+    if (!el) return;
+    el.style.setProperty("--tilt-x", "0deg");
+    el.style.setProperty("--tilt-y", "0deg");
+  }
+
   return (
-    <div className="card-hover rounded-lg border border-border bg-surface p-5 sm:p-6">
+    <div
+      ref={ref}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="tilt-card rounded-lg border border-border bg-surface p-5 sm:p-6"
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-1">
         <h3 className="font-mono text-base font-semibold text-text">{role.company}</h3>
         <span className="font-mono text-xs text-text-faint whitespace-nowrap">{role.dates}</span>

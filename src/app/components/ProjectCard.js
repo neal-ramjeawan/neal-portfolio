@@ -8,13 +8,15 @@ const STATUS_MAP = {
     text: "text-accent-warm",
     ring: "border-accent-warm/40",
     glow: "shadow-[0_0_60px_-18px_rgba(242,184,75,0.4)]",
+    sweep: "rgba(242, 184, 75, 0.55)",
   },
   monitoring: {
     label: "Monitoring",
-    dot: "bg-accent",
+    dot: "bg-accent status-pulse",
     text: "text-accent",
     ring: "border-accent/40",
     glow: "shadow-[0_0_60px_-18px_rgba(0,173,181,0.35)]",
+    sweep: "rgba(0, 173, 181, 0.55)",
   },
   "in-progress": {
     label: "In progress",
@@ -34,17 +36,24 @@ export default function ProjectCard({ project }) {
     : "border-border hover:border-border-strong";
 
   const glowClass = highlighted ? status.glow : "";
+  const sweepClass = highlighted ? "border-sweep" : "";
 
   return (
     <article
       id={project.slug}
-      className={`card-hover scroll-mt-24 rounded-lg border bg-surface p-6 sm:p-8 ${borderClass} ${glowClass}`}
+      className={`card-hover scroll-mt-24 rounded-lg border bg-surface p-6 sm:p-8 ${borderClass} ${glowClass} ${sweepClass}`}
+      style={highlighted ? { "--sweep-color": status.sweep } : undefined}
     >
       {/* STATUS + REPOSITORY */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2 font-mono text-xs">
           <span
             className={`inline-block h-1.5 w-1.5 rounded-full ${status.dot}`}
+            style={
+              project.status === "monitoring"
+                ? { "--pulse-color": "rgba(0, 173, 181, 0.45)" }
+                : undefined
+            }
           />
           <span className={status.text}>{status.label}</span>
         </div>
@@ -53,9 +62,12 @@ export default function ProjectCard({ project }) {
           href={`https://github.com/${project.repo}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-xs text-text-dim hover:text-accent-warm transition-colors"
+          className="group inline-flex items-center gap-1 font-mono text-xs text-text-dim hover:text-accent-warm transition-colors"
         >
-          {project.repo} &rarr;
+          <span>{project.repo}</span>
+          <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
+            &rarr;
+          </span>
         </a>
       </div>
 
@@ -95,7 +107,7 @@ export default function ProjectCard({ project }) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md bg-accent-warm px-3.5 py-2 font-mono text-xs font-medium text-bg hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-1.5 rounded-md bg-accent-warm px-3.5 py-2 font-mono text-xs font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             View live demo &rarr;
           </a>

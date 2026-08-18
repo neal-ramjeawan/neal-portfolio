@@ -1,4 +1,5 @@
 import ProjectCard from "../components/ProjectCard";
+import StaggerReveal from "../components/StaggerReveal";
 import { projects } from "../data/projects";
 
 export const metadata = {
@@ -24,11 +25,11 @@ export default function Projects() {
         actively being built.
       </p>
 
-      <div className="space-y-6">
+      <StaggerReveal className="space-y-6" stagger={80}>
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
-      </div>
+      </StaggerReveal>
     </main>
   );
 }

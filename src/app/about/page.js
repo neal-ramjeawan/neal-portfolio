@@ -3,6 +3,8 @@ import { skillGroups } from "../data/skills";
 import { experience } from "../data/experience";
 import { skillIcons } from "../components/icons";
 import ExperienceCard from "../components/ExperienceCard";
+import SpotlightCard from "../components/SpotlightCard";
+import StaggerReveal from "../components/StaggerReveal";
 
 export const metadata = {
   title: "About",
@@ -65,32 +67,39 @@ export default function About() {
 
       <div className="mt-14">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">How I work</h2>
-        <div className="space-y-4">
+        <StaggerReveal className="space-y-4" stagger={80}>
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="card-hover rounded-lg border border-border bg-surface p-5">
+            <SpotlightCard
+              key={p.title}
+              className="card-hover rounded-lg border border-border bg-surface p-5"
+            >
               <h3 className="font-mono text-sm text-accent-warm mb-2">{p.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{p.body}</p>
-            </div>
+            </SpotlightCard>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mt-14">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">Focus areas</h2>
-        <div className="grid sm:grid-cols-2 gap-3">
+        <StaggerReveal className="grid sm:grid-cols-2 gap-3" stagger={60}>
           {skillGroups.map((group) => {
             const Icon = skillIcons[group.name];
             return (
-              <div key={group.name} className="card-hover rounded-lg border border-border bg-surface p-4">
+              <SpotlightCard
+                key={group.name}
+                color="rgba(242, 184, 75, 0.1)"
+                className="card-hover rounded-lg border border-border bg-surface p-4"
+              >
                 <div className="flex items-center gap-2 mb-1">
                   {Icon && <Icon className="w-4 h-4 text-accent-warm" />}
                   <p className="font-mono text-sm text-text">{group.name}</p>
                 </div>
                 <p className="text-xs text-text-dim">{group.items.join(" \u00b7 ")}</p>
-              </div>
+              </SpotlightCard>
             );
           })}
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mt-14 flex flex-wrap gap-3">

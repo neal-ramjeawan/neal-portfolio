@@ -142,6 +142,117 @@ button:focus-visible {
   color: var(--text);
 }
 
+/* Cursor-following spotlight glow, used by <SpotlightCard>. Kept faint
+   on purpose — it's a hint of light, not a highlight. Off entirely on
+   touch devices, where there's no cursor to follow. */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    var(--spotlight-color, rgba(0, 173, 181, 0.12)),
+    transparent 70%
+  );
+}
+.spotlight-card:hover .spotlight-overlay,
+.spotlight-card:focus-within .spotlight-overlay {
+  opacity: 1;
+}
+@media (hover: none) {
+  .spotlight-overlay {
+    display: none;
+  }
+}
+
+/* Thin animated gradient line that sweeps around a card's border on
+   hover — reserved for "highlighted" project cards (resolved /
+   monitoring) so it reads as an accent, not a default. */
+@keyframes border-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+.border-sweep {
+  position: relative;
+}
+.border-sweep::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sweep-color, rgba(242, 184, 75, 0.55)),
+    transparent
+  );
+  background-size: 200% 100%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: border-sweep 3.5s linear infinite;
+  pointer-events: none;
+}
+.border-sweep:hover::after {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .border-sweep::after {
+    animation: none;
+  }
+}
+
+/* Slow pulse for the "monitoring" status dot — it's the one status that
+   means "actively being watched", so it's the only dot that breathes. */
+@keyframes status-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--pulse-color, rgba(0, 173, 181, 0.45));
+  }
+  50% {
+    box-shadow: 0 0 0 4px transparent;
+  }
+}
+.status-pulse {
+  animation: status-pulse 2.2s ease-in-out infinite;
+}
+
+/* Subtle 3D tilt for the experience card — angle is driven by JS via
+   --tilt-x / --tilt-y CSS vars, updated on pointer move. Self-contained
+   (not layered on .card-hover) so the tilt and the hover-lift can
+   combine in one transform instead of fighting over the property. */
+.tilt-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+}
+.tilt-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.45), 0 0 26px -10px var(--accent-soft);
+  transform: perspective(800px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(-3px);
+}
+@media (hover: none) {
+  .tilt-card {
+    transform: none !important;
+  }
+}
+
 /* Scrollbar (webkit) — quiet, on-brand */
 ::-webkit-scrollbar {
   width: 10px;
