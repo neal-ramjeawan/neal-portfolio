@@ -31,7 +31,7 @@ export default function ExperienceCard({ role }) {
       ref={ref}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="tilt-card rounded-lg border border-border bg-surface p-5 sm:p-6"
+      className="tilt-card rounded-lg border border-border bg-surface p-6 sm:p-8"
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-1">
         <h3 className="font-mono text-base font-semibold text-text">{role.company}</h3>
