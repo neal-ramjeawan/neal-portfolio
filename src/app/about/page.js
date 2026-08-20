@@ -3,11 +3,13 @@ import { skillGroups } from "../data/skills";
 import { experience } from "../data/experience";
 import { skillIcons } from "../components/icons";
 import ExperienceCard from "../components/ExperienceCard";
+import SpotlightCard from "../components/SpotlightCard";
+import StaggerReveal from "../components/StaggerReveal";
 
 export const metadata = {
   title: "About",
   description:
-    "Cloud, DevOps, and SRE engineer focused on infrastructure that's automated, observable, and tested against real failure.",
+    "Cloud Platform / DevOps engineer focused on infrastructure that's automated, observable, and tested against real failure.",
 };
 
 const PRINCIPLES = [
@@ -27,7 +29,7 @@ const PRINCIPLES = [
 
 export default function About() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+    <main className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
       <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
         About
       </p>
@@ -35,9 +37,9 @@ export default function About() {
         Neal Ramjeawan
       </h1>
 
-      <div className="space-y-5 text-text-dim leading-relaxed">
+      <div className="space-y-5 text-text-dim leading-relaxed max-w-2xl">
         <p>
-          I&apos;m a cloud and platform engineer focused on building infrastructure
+          I&apos;m a Cloud and Platform Engineer focused on building infrastructure
           that stays up under real conditions &mdash; not just on the happy path.
           Most of what&apos;s on this site is self-directed: labs and platforms I
           built specifically to prove out skills in cloud infrastructure, DevOps
@@ -53,44 +55,48 @@ export default function About() {
 
       <div id="experience" className="mt-14 scroll-mt-24">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">Experience</h2>
-        <div className="relative border-l border-border-strong ml-1.5 space-y-8">
+        <StaggerReveal className="space-y-6" stagger={80}>
           {experience.map((role) => (
-            <div key={role.company} className="relative pl-8">
-              <span className="absolute -left-[7px] top-1.5 h-3 w-3 rounded-full bg-accent-warm ring-4 ring-bg" />
-              <ExperienceCard role={role} />
-            </div>
+            <ExperienceCard key={role.company} role={role} />
           ))}
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mt-14">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">How I work</h2>
-        <div className="space-y-4">
+        <StaggerReveal className="space-y-4" stagger={80}>
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="card-hover rounded-lg border border-border bg-surface p-5">
+            <SpotlightCard
+              key={p.title}
+              className="card-hover rounded-lg border border-border bg-surface p-6 sm:p-8"
+            >
               <h3 className="font-mono text-sm text-accent-warm mb-2">{p.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{p.body}</p>
-            </div>
+            </SpotlightCard>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mt-14">
         <h2 className="font-mono text-xl font-semibold text-text mb-6">Focus areas</h2>
-        <div className="grid sm:grid-cols-2 gap-3">
+        <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={60}>
           {skillGroups.map((group) => {
             const Icon = skillIcons[group.name];
             return (
-              <div key={group.name} className="card-hover rounded-lg border border-border bg-surface p-4">
-                <div className="flex items-center gap-2 mb-1">
-                  {Icon && <Icon className="w-4 h-4 text-accent-warm" />}
-                  <p className="font-mono text-sm text-text">{group.name}</p>
+              <SpotlightCard
+                key={group.name}
+                color="rgba(242, 184, 75, 0.1)"
+                className="card-hover rounded-lg border border-border bg-surface p-6 sm:p-8"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  {Icon && <Icon className="w-5 h-5 text-accent-warm" />}
+                  <p className="font-mono text-base text-text">{group.name}</p>
                 </div>
-                <p className="text-xs text-text-dim">{group.items.join(" \u00b7 ")}</p>
-              </div>
+                <p className="text-sm text-text-dim leading-relaxed">{group.items.join(" \u00b7 ")}</p>
+              </SpotlightCard>
             );
           })}
-        </div>
+        </StaggerReveal>
       </div>
 
       <div className="mt-14 flex flex-wrap gap-3">
@@ -98,7 +104,7 @@ export default function About() {
           href="/projects"
           className="rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
         >
-          View the deployment log
+          View the Project Log
         </Link>
         <Link
           href="/contact"

@@ -1,17 +1,18 @@
 import ProjectCard from "../components/ProjectCard";
+import StaggerReveal from "../components/StaggerReveal";
 import { projects } from "../data/projects";
 
 export const metadata = {
   title: "Projects",
   description:
-    "The full deployment log: cloud, DevOps, and SRE portfolio projects, with the problem, the response, and the result for each.",
+    "The full project log: Cloud Platform and DevOps portfolio projects, with the problem, the response, and the result for each.",
 };
 
 export default function Projects() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
       <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-        Deployment log
+        Project Log
       </p>
       <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-4">
         Every project, start to finish
@@ -24,11 +25,11 @@ export default function Projects() {
         actively being built.
       </p>
 
-      <div className="space-y-6">
+      <StaggerReveal className="space-y-6" stagger={80}>
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
-      </div>
+      </StaggerReveal>
     </main>
   );
 }

@@ -3,6 +3,8 @@ import UptimeCounter from "./components/UptimeCounter";
 import ProjectCard from "./components/ProjectCard";
 import NetworkGraphic from "./components/NetworkGraphic";
 import Reveal from "./components/Reveal";
+import StaggerReveal from "./components/StaggerReveal";
+import SpotlightCard from "./components/SpotlightCard";
 import CountUp from "./components/CountUp";
 import ExperienceCarousel from "./components/ExperienceCarousel";
 import { DownloadIcon, CodeIcon, MailIcon, skillIcons } from "./components/icons";
@@ -13,24 +15,14 @@ import { contact } from "./data/contact";
 
 const METRICS = [
   {
-    to: 6,
-    suffix: "+",
-    label: "Years of hands-on engineering",
+    to: new Set(projects.flatMap((p) => p.stack)).size,
+    suffix: "",
+    label: "Distinct technologies across the portfolio",
   },
   {
     to: projects.length,
     suffix: "",
     label: "Portfolio projects shipped or in flight",
-  },
-  {
-    to: 500,
-    prefix: "0 / ",
-    label: "Failed requests across chaos-tested rollouts",
-  },
-  {
-    to: 7,
-    suffix: "",
-    label: "Compose profiles orchestrated in one stack",
   },
 ];
 
@@ -49,7 +41,7 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            Cloud Engineer &middot; DevOps &middot; SRE / Systems Engineer
+            Cloud Platform Engineer &middot; DevOps &middot; SRE &middot; Systems Engineer
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">
@@ -62,7 +54,7 @@ export default function Home() {
           <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-3">
             <a
               href={contact.resumeHref}
-              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               <DownloadIcon className="w-4 h-4" />
               Download r&eacute;sum&eacute;
@@ -82,7 +74,7 @@ export default function Home() {
               href="/projects"
               className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
             >
-              View deployment log &rarr;
+              View Project log &rarr;
             </Link>
           </div>
 
@@ -96,7 +88,7 @@ export default function Home() {
 
       {/* EXPERIENCE */}
       <section>
-        <Reveal className="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
             Experience
           </p>
@@ -124,20 +116,21 @@ export default function Home() {
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-            Components
+            Stack
           </p>
 
           <h2 className="font-mono text-2xl font-semibold text-text mb-10">
-            Everything currently in service
+            Competencies
           </h2>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <StaggerReveal className="grid sm:grid-cols-2 gap-4" stagger={70}>
             {skillGroups.map((group) => {
               const Icon = skillIcons[group.name];
 
               return (
-                <div
+                <SpotlightCard
                   key={group.name}
+                  color="rgba(242, 184, 75, 0.12)"
                   className="card-hover rounded-lg border border-accent-warm/25 bg-surface p-5 shadow-[0_0_40px_-20px_rgba(242,184,75,0.35)]"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -153,10 +146,10 @@ export default function Home() {
                   <p className="text-sm text-text-dim leading-relaxed">
                     {group.items.join(" \u00b7 ")}
                   </p>
-                </div>
+                </SpotlightCard>
               );
             })}
-          </div>
+          </StaggerReveal>
         </Reveal>
 
         <div className="section-divider" />
@@ -166,21 +159,21 @@ export default function Home() {
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-            Deployment log
+            Project log
           </p>
 
           <h2 className="font-mono text-2xl font-semibold text-text mb-10">
-            Recent changes
+            Selected projects
           </h2>
 
-          <div className="space-y-6">
+          <StaggerReveal className="space-y-6" stagger={90}>
             {featuredProjects.map((project) => (
               <ProjectCard
                 key={project.slug}
                 project={project}
               />
             ))}
-          </div>
+          </StaggerReveal>
 
           <div className="mt-10">
             <Link
@@ -198,7 +191,7 @@ export default function Home() {
       {/* METRICS */}
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 gap-8 max-w-lg mx-auto">
             {METRICS.map((metric) => (
               <div key={metric.label}>
                 <p className="font-mono text-3xl font-bold text-text">
@@ -239,7 +232,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               <MailIcon className="w-4 h-4" />
               Email me

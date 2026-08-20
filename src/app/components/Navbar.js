@@ -56,24 +56,34 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile panel */}
-      {open && (
-        <div className="sm:hidden border-t border-border bg-bg-elevated px-6 py-3 flex flex-col gap-1 font-mono text-sm">
-          {LINKS.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className={`py-2 ${active ? "text-accent-warm" : "text-text-dim hover:text-text"}`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+      {/* Mobile panel — stays mounted so it can transition open/closed
+          instead of popping in abruptly (every other interactive
+          element on the site now has motion; this was the one that
+          didn't). Uses the grid-rows trick to animate height without
+          measuring the content. */}
+      <div
+        className={`sm:hidden grid overflow-hidden border-border bg-bg-elevated transition-[grid-template-rows] duration-300 ease-out ${
+          open ? "grid-rows-[1fr] border-t" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="px-6 py-3 flex flex-col gap-1 font-mono text-sm">
+            {LINKS.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={`py-2 ${active ? "text-accent-warm" : "text-text-dim hover:text-text"}`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
