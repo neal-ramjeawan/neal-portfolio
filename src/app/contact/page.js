@@ -1,4 +1,5 @@
 import { contact } from "../data/contact";
+import CopyButton from "../components/CopyButton";
 
 export const metadata = {
   title: "Contact",
@@ -41,21 +42,27 @@ export default function Contact() {
 
       <div className="space-y-3">
         {CHANNELS.map((c) => (
-          <a
+          <div
             key={c.label}
-            href={c.href}
-            target={c.label === "Email" ? undefined : "_blank"}
-            rel={c.label === "Email" ? undefined : "noopener noreferrer"}
-            className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+            className="card-hover flex items-center gap-3 rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors"
           >
-            <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
-              {c.label}
-            </span>
+            <a
+              href={c.href}
+              target={c.label === "Email" ? undefined : "_blank"}
+              rel={c.label === "Email" ? undefined : "noopener noreferrer"}
+              className="flex-1 flex items-center justify-between group"
+            >
+              <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
+                {c.label}
+              </span>
 
-            <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
-              {c.value}
-            </span>
-          </a>
+              <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
+                {c.value}
+              </span>
+            </a>
+
+            <CopyButton value={c.value} label={`Copy ${c.label.toLowerCase()}`} />
+          </div>
         ))}
 
         <a

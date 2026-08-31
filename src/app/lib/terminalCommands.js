@@ -28,8 +28,8 @@ export function runTerminalCommand(raw, context = {}) {
   const [cmd, ...rest] = trimmed.toLowerCase().split(/\s+/);
   const arg = rest.join(" ");
 
-  function print(text, tone = "output") {
-    lines.push({ text, tone });
+  function print(text, tone = "output", copyValue) {
+    lines.push({ text, tone, copyValue });
   }
 
   switch (cmd) {
@@ -115,9 +115,9 @@ export function runTerminalCommand(raw, context = {}) {
     }
 
     case "contact": {
-      print(`email     ${contact.email}`);
-      print(`github    ${contact.github}`);
-      print(`linkedin  ${contact.linkedin}`);
+      print(`email     ${contact.email}`, "output", contact.email);
+      print(`github    ${contact.github}`, "output", contact.github);
+      print(`linkedin  ${contact.linkedin}`, "output", contact.linkedin);
       break;
     }
 
@@ -134,6 +134,19 @@ export function runTerminalCommand(raw, context = {}) {
       } else {
         print(`command not found: ${cmd} — type 'help' for a list`, "error");
       }
+      break;
+    }
+
+    // A couple of unlisted commands for anyone curious enough to try them —
+    // deliberately left out of `help` so only power users find them.
+    case "sudo": {
+      print(`${arg ? `sudo: ${arg}: ` : ""}permission denied — nice try though.`, "error");
+      break;
+    }
+
+    case "coffee": {
+      print("☕ brewing...", "accent");
+      print("done. +10% focus for the next 25 minutes.");
       break;
     }
 

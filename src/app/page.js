@@ -5,6 +5,7 @@ import NetworkGraphic from "./components/NetworkGraphic";
 import Reveal from "./components/Reveal";
 import StaggerReveal from "./components/StaggerReveal";
 import SpotlightCard from "./components/SpotlightCard";
+import TypewriterRoles from "./components/TypewriterRoles";
 import CountUp from "./components/CountUp";
 import ExperienceCarousel from "./components/ExperienceCarousel";
 import { DownloadIcon, CodeIcon, MailIcon, skillIcons } from "./components/icons";
@@ -13,6 +14,9 @@ import { featuredProjects, projects } from "./data/projects";
 import { experience } from "./data/experience";
 import { contact } from "./data/contact";
 
+// Both numbers below are derived from the actual project data rather
+// than hardcoded, so they can't silently drift out of sync with it
+// the way the old "500 failed requests" stat did.
 const METRICS = [
   {
     to: new Set(projects.flatMap((p) => p.stack)).size,
@@ -41,7 +45,7 @@ export default function Home() {
           </h1>
 
           <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            Cloud Platform Engineer &middot; DevOps &middot; SRE &middot; Systems Engineer
+            <TypewriterRoles />
           </p>
 
           <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">
@@ -74,7 +78,7 @@ export default function Home() {
               href="/projects"
               className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
             >
-              View Project log &rarr;
+              View deployment log &rarr;
             </Link>
           </div>
 
@@ -116,11 +120,11 @@ export default function Home() {
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-            Stack
+            Components
           </p>
 
           <h2 className="font-mono text-2xl font-semibold text-text mb-10">
-            Competencies
+            Everything currently in service
           </h2>
 
           <StaggerReveal className="grid sm:grid-cols-2 gap-4" stagger={70}>
@@ -159,11 +163,11 @@ export default function Home() {
       <section>
         <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
           <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-            Project log
+            Deployment log
           </p>
 
           <h2 className="font-mono text-2xl font-semibold text-text mb-10">
-            Selected projects
+            Recent changes
           </h2>
 
           <StaggerReveal className="space-y-6" stagger={90}>
