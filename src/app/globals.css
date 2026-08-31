@@ -16,6 +16,7 @@
   --accent-warm: #f2b84b;
   --accent-warm-dim: #d99a2b;
   --accent-warm-soft: rgba(242, 184, 75, 0.16);
+  --danger: #e2665a;
 }
 
 @theme inline {
@@ -147,7 +148,6 @@ button:focus-visible {
    touch devices, where there's no cursor to follow. */
 .spotlight-card {
   position: relative;
-  overflow: hidden;
 }
 .spotlight-overlay {
   position: absolute;
