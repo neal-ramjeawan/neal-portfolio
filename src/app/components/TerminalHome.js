@@ -85,7 +85,7 @@ export default function TerminalHome() {
   const toneClass = {
     prompt: "text-accent-warm",
     accent: "text-accent",
-    error: "text-accent-warm",
+    error: "text-[var(--danger)]",
     output: "text-text-dim",
   };
 
@@ -108,7 +108,7 @@ export default function TerminalHome() {
         className="flex-1 overflow-y-auto px-6 py-6 font-mono text-sm space-y-1 max-w-3xl w-full mx-auto"
       >
         {lines.map((line, i) => (
-          <div key={i} className={toneClass[line.tone] ?? "text-text-dim"}>
+          <div key={i} className={`whitespace-pre-wrap ${toneClass[line.tone] ?? "text-text-dim"}`}>
             {line.text || "\u00a0"}
           </div>
         ))}

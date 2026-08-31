@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export default function Footer() {
@@ -20,7 +22,22 @@ export default function Footer() {
             contact
           </Link>
         </div>
-        <p>&copy; {new Date().getFullYear()} Neal Ramjeawan</p>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-terminal"))}
+            title="Open the terminal command palette"
+            className="flex items-center gap-1.5 hover:text-text-dim transition-colors"
+          >
+            <span>Press</span>
+            <kbd className="rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-text-dim">
+              &#8984;K
+            </kbd>
+            <span className="hidden sm:inline">for the terminal</span>
+          </button>
+          <span aria-hidden="true">&middot;</span>
+          <p>&copy; {new Date().getFullYear()} Neal Ramjeawan</p>
+        </div>
       </div>
     </footer>
   );
