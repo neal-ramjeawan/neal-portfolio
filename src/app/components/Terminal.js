@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { site } from "../data/site";
 import { runTerminalCommand } from "../lib/terminalCommands";
+import CopyButton from "./CopyButton";
 
 const WELCOME = [
   { text: `${site.name} — interactive shell` },
@@ -150,8 +151,12 @@ export default function Terminal() {
           className="max-h-[50vh] overflow-y-auto px-4 py-3 font-mono text-sm space-y-1"
         >
           {lines.map((line, i) => (
-            <div key={i} className={`whitespace-pre-wrap ${toneClass[line.tone] ?? "text-text-dim"}`}>
-              {line.text || "\u00a0"}
+            <div
+              key={i}
+              className={`whitespace-pre-wrap flex items-center gap-1.5 ${toneClass[line.tone] ?? "text-text-dim"}`}
+            >
+              <span>{line.text || "\u00a0"}</span>
+              {line.copyValue && <CopyButton value={line.copyValue} label={`Copy ${line.copyValue}`} />}
             </div>
           ))}
         </div>

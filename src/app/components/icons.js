@@ -138,6 +138,23 @@ export function TerminalIcon({ className }) {
   );
 }
 
+export function CopyIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="9" y="9" width="11" height="11" rx="1.5" />
+      <path d="M5 15V5.5A1.5 1.5 0 0 1 6.5 4H15" />
+    </svg>
+  );
+}
+
+export function CheckIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <path d="m5 12.5 4.5 4.5L19 7" />
+    </svg>
+  );
+}
+
 // Maps each skills.js category name to its icon component.
 export const skillIcons = {
   "Cloud & IaC": CloudIcon,
