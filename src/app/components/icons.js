@@ -129,6 +129,15 @@ export function ChevronRightIcon({ className }) {
   );
 }
 
+export function TerminalIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="m7 9 3 3-3 3M13 15h4" />
+    </svg>
+  );
+}
+
 // Maps each skills.js category name to its icon component.
 export const skillIcons = {
   "Cloud & IaC": CloudIcon,
