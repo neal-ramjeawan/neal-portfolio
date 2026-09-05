@@ -20,7 +20,7 @@ export default function ProjectCard({ project }) {
   return (
     <article
       id={project.slug}
-      className="scroll-mt-24 border-t border-border bg-transparent py-8 sm:py-10 md:grid md:grid-cols-[11rem_1fr] md:gap-x-10"
+      className="project-row scroll-mt-24 border-t border-border bg-transparent py-8 sm:py-10 md:grid md:grid-cols-[11rem_1fr] md:gap-x-10"
     >
       {/* STATUS + REPOSITORY */}
       <div className="mb-6 md:mb-0">
