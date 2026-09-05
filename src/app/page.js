@@ -162,16 +162,18 @@ export default function Home() {
 
           <p className="text-text-dim max-w-xl mx-auto mb-8">
             If you need infrastructure that&apos;s automated, observable, and
-            holds up under real failure &mdash; let&apos;s talk.
+            holds up under real failure - let&apos;s talk.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href={`mailto:${contact.email}`}
               className="marker-link font-mono text-sm"
             >
               Email me
             </a>
+
+            <span className="text-text-faint" aria-hidden="true">|</span>
 
             <Link
               href="/contact"

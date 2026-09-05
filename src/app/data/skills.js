@@ -1,5 +1,5 @@
 // Component groups for the "system status" skills grid.
-// Each group mirrors how a real service map would be organized —
+// Each group mirrors how a real service map would be organized -
 // by function, not alphabetically.
 
 export const skillGroups = [

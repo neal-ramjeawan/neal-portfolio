@@ -14,7 +14,7 @@ function getSnapshot() {
   return window.localStorage.getItem(STORAGE_KEY) === "terminal" ? "terminal" : "site";
 }
 
-// Always "site" during SSR — localStorage doesn't exist on the server.
+// Always "site" during SSR - localStorage doesn't exist on the server.
 // useSyncExternalStore reconciles this against the real client value
 // automatically on hydration, without a manual effect or a setState
 // call that could cascade renders.
@@ -27,7 +27,7 @@ export function ViewModeProvider({ children }) {
 
   const setMode = useCallback((next) => {
     window.localStorage.setItem(STORAGE_KEY, next);
-    // The "storage" event only fires in *other* tabs by default — dispatch
+    // The "storage" event only fires in *other* tabs by default - dispatch
     // it manually so this tab's own toggle updates immediately too.
     window.dispatchEvent(new StorageEvent("storage", { key: STORAGE_KEY }));
   }, []);

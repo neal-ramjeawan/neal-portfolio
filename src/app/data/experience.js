@@ -1,6 +1,6 @@
 // Work history for the About page's Experience timeline. Most recent
 // role first. `highlights` is a curated subset of the full CV bullet
-// list, not a full copy — the résumé PDF has the complete detail.
+// list, not a full copy - the résumé PDF has the complete detail.
 
 export const experience = [
   {

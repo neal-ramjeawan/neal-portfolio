@@ -1,4 +1,4 @@
-const CLOUD_CENTER = [380, 320]; // node index 5's old position — now the hub
+const CLOUD_CENTER = [380, 320]; // node index 5's old position - now the hub
 
 const NODES = [
   [380, 60],
@@ -26,7 +26,7 @@ const PULSES = [
 ];
 
 // Same path as CloudIcon in icons.js (24x24 viewBox), scaled and
-// centered into the diagram — so the hero graphic and the "Cloud &
+// centered into the diagram - so the hero graphic and the "Cloud &
 // IaC" card reference the same shape. Line-art (stroke + faint fill)
 // instead of a solid filled blob, to match the diagram's thin-line
 // weight rather than sitting on top of it like a sticker.

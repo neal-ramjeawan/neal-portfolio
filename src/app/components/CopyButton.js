@@ -14,7 +14,7 @@ export default function CopyButton({ value, label = "Copy" }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // Clipboard API unavailable (older browser, no permission, etc.) —
+      // Clipboard API unavailable (older browser, no permission, etc.) -
       // fail silently, the value is still visible to select and copy by hand.
     }
   }

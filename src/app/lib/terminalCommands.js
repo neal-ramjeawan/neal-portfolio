@@ -12,12 +12,12 @@ const STATUS_LABEL = {
 
 // One shared command set for both the Ctrl/Cmd+K overlay and full-page
 // terminal mode, so they can never drift apart. Returns the lines to
-// print plus an optional `action` the caller performs — the command
+// print plus an optional `action` the caller performs - the command
 // engine itself never touches the router, DOM, or view-mode state
 // directly, since only the caller knows how to navigate / switch mode
 // in its own context (modal vs full page).
 //
-// `context.canSwitchMode` controls whether `site`/`gui` is offered —
+// `context.canSwitchMode` controls whether `site`/`gui` is offered -
 // only meaningful when actually running inside terminal mode.
 export function runTerminalCommand(raw, context = {}) {
   const trimmed = raw.trim();
@@ -74,14 +74,14 @@ export function runTerminalCommand(raw, context = {}) {
     case "history":
     case "experience": {
       experience.forEach((role) => {
-        print(`${role.company} — ${role.title}`, "accent");
+        print(`${role.company} - ${role.title}`, "accent");
         print(`  ${role.dates}`);
       });
       break;
     }
 
     case "timeline": {
-      experience.forEach((role) => print(`${role.dates}  ${role.company} — ${role.title}`, "accent"));
+      experience.forEach((role) => print(`${role.dates}  ${role.company} - ${role.title}`, "accent"));
       break;
     }
 
@@ -186,7 +186,7 @@ export function runTerminalCommand(raw, context = {}) {
         print(`no matches for '${arg}'`, "error");
         break;
       }
-      matches.forEach((project) => print(`${project.slug} — ${project.title}`, "accent"));
+      matches.forEach((project) => print(`${project.slug} - ${project.title}`, "accent"));
       break;
     }
 
@@ -236,15 +236,15 @@ export function runTerminalCommand(raw, context = {}) {
         print("→ switching to site view...", "accent");
         action = { type: "mode", value: "site" };
       } else {
-        print(`command not found: ${cmd} — type 'help' for a list`, "error");
+        print(`command not found: ${cmd} - type 'help' for a list`, "error");
       }
       break;
     }
 
-    // A couple of unlisted commands for anyone curious enough to try them —
+    // A couple of unlisted commands for anyone curious enough to try them -
     // deliberately left out of `help` so only power users find them.
     case "sudo": {
-      print(`${arg ? `sudo: ${arg}: ` : ""}permission denied — nice try though.`, "error");
+      print(`${arg ? `sudo: ${arg}: ` : ""}permission denied - nice try though.`, "error");
       break;
     }
 
@@ -262,7 +262,7 @@ export function runTerminalCommand(raw, context = {}) {
     }
 
     default: {
-      print(`command not found: ${cmd} — type 'help' for a list`, "error");
+      print(`command not found: ${cmd} - type 'help' for a list`, "error");
     }
   }
 

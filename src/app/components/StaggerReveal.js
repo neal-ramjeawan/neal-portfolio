@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 // Same on-scroll trigger as Reveal, but staggers each child instead of
 // fading the whole block in at once. Pass a mapped array of cards as
 // children and keep whatever container className you already had
-// (grid, space-y-6, etc.) — each child gets wrapped in its own fade-up
+// (grid, space-y-6, etc.) - each child gets wrapped in its own fade-up
 // div so the layout classes on the parent keep working unchanged.
 export default function StaggerReveal({
   children,
