@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { TerminalIcon } from "./icons";
+import { MoonIcon, SunIcon, TerminalIcon } from "./icons";
 import { useViewMode } from "../context/ViewMode";
+import { useThemeMode } from "../context/ThemeMode";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -17,6 +18,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { setMode } = useViewMode();
+  const { theme, toggleTheme } = useThemeMode();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
@@ -47,6 +49,15 @@ export default function Navbar() {
 
         {/* Mode toggle + mobile toggle */}
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            className="text-text-dim hover:text-accent-warm border border-border p-1.5 transition-colors"
+          >
+            {theme === "dark" ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
+          </button>
           <div
             className="hidden sm:flex items-center gap-0.5 border-l border-border pl-4 font-mono text-xs"
             role="group"

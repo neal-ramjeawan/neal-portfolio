@@ -11,6 +11,23 @@ const base = {
   strokeLinejoin: "round",
 };
 
+export function MoonIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" />
+    </svg>
+  );
+}
+
+export function SunIcon({ className }) {
+  return (
+    <svg {...base} className={className}>
+      <circle cx="12" cy="12" r="3.5" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  );
+}
+
 export function CloudIcon({ className }) {
   return (
     <svg {...base} className={className}>

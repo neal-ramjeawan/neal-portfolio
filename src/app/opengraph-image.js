@@ -18,8 +18,8 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(165deg, #1c1815 0%, #201c18 50%, #171310 100%)",
-          color: "#f1ece4",
+          background: "linear-gradient(135deg, #f4f4ef 0%, #f8f8f4 55%, #eef2f0 100%)",
+          color: "#20282a",
           fontFamily: "sans-serif",
         }}
       >
@@ -29,29 +29,29 @@ export default async function Image() {
               width: 56,
               height: 56,
               borderRadius: 12,
-              background: "#f2b84b",
+              background: "#4e7480",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 24,
               fontWeight: 700,
-              color: "#1c1815",
+              color: "#f4f4ef",
             }}
           >
             NR
           </div>
-          <div style={{ fontSize: 28, color: "#b6ab9c" }}>{hostname}</div>
+          <div style={{ fontSize: 28, color: "#687478" }}>{hostname}</div>
         </div>
 
         <div style={{ display: "flex", fontSize: 72, fontWeight: 700, letterSpacing: -2 }}>
           Neal Ramjeawan
         </div>
 
-        <div style={{ display: "flex", fontSize: 34, color: "#f2b84b", marginTop: 18 }}>
+        <div style={{ display: "flex", fontSize: 34, color: "#4e7480", marginTop: 18 }}>
           Cloud Platform Engineer &middot; DevOps &middot; SRE 
         </div>
 
-        <div style={{ display: "flex", fontSize: 24, color: "#968b7b", marginTop: 30, maxWidth: 900 }}>
+        <div style={{ display: "flex", fontSize: 24, color: "#899395", marginTop: 30, maxWidth: 900 }}>
           Infrastructure projects built, broken on purpose, and fixed before they shipped.
         </div>
       </div>
