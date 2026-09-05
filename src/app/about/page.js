@@ -1,9 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { skillGroups } from "../data/skills";
 import { experience } from "../data/experience";
-import { skillIcons } from "../components/icons";
 import ExperienceCard from "../components/ExperienceCard";
-import SpotlightCard from "../components/SpotlightCard";
 import StaggerReveal from "../components/StaggerReveal";
 
 export const metadata = {
@@ -29,32 +28,46 @@ const PRINCIPLES = [
 
 export default function About() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-      <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-        About
-      </p>
-      <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-8">
-        Neal Ramjeawan
-      </h1>
+    <main className="max-w-6xl mx-auto px-6 py-20 sm:py-28">
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_20rem] gap-14 lg:gap-24 items-start">
+        <div>
+          <p className="eyebrow mb-4">
+            About
+          </p>
+          <h1 className="display-face text-5xl sm:text-7xl font-bold text-text mb-8">
+            Neal Ramjeawan
+          </h1>
 
-      <div className="space-y-5 text-text-dim leading-relaxed max-w-2xl">
-        <p>
-          I&apos;m a Cloud and Platform Engineer focused on building infrastructure
-          that stays up under real conditions &mdash; not just on the happy path.
-          Most of what&apos;s on this site is self-directed: labs and platforms I
-          built specifically to prove out skills in cloud infrastructure, DevOps
-          practice, and site reliability engineering.
-        </p>
-        <p>
-          My main focus areas are AWS and Azure, Kubernetes and container
-          orchestration, identity and access management, infrastructure as code,
-          and the CI/CD and observability tooling that makes all of it operable
-          rather than just deployable.
-        </p>
+          <div className="space-y-5 text-text-dim leading-relaxed max-w-2xl">
+            <p>
+              I&apos;m a Cloud and Platform Engineer focused on building infrastructure
+              that stays up under real conditions - not just on the happy path.
+              Most of what&apos;s on this site is self-directed: labs and platforms I
+              built specifically to prove out skills in cloud infrastructure, DevOps
+              practice, and site reliability engineering.
+            </p>
+            <p>
+              My main focus areas are AWS and Azure, Kubernetes and container
+              orchestration, identity and access management, infrastructure as code,
+              and the CI/CD and observability tooling that makes all of it operable
+              rather than just deployable.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex justify-center lg:pt-10">
+          <Image
+            src="/portrait.png"
+            alt="Neal Ramjeawan"
+            width={520}
+            height={520}
+            className="portrait-image w-full max-w-[20rem]"
+          />
+        </div>
       </div>
 
       <div id="experience" className="mt-14 scroll-mt-24">
-        <h2 className="font-mono text-xl font-semibold text-text mb-6">Experience</h2>
+        <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-6">Experience</h2>
         <StaggerReveal className="space-y-6" stagger={80}>
           {experience.map((role) => (
             <ExperienceCard key={role.company} role={role} />
@@ -63,37 +76,35 @@ export default function About() {
       </div>
 
       <div className="mt-14">
-        <h2 className="font-mono text-xl font-semibold text-text mb-6">How I work</h2>
+        <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-6">How I work</h2>
         <StaggerReveal className="space-y-4" stagger={80}>
           {PRINCIPLES.map((p) => (
-            <SpotlightCard
+            <div
               key={p.title}
-              className="card-hover rounded-lg border border-border bg-surface p-6 sm:p-8"
+              className="border-t border-border bg-transparent py-6 sm:py-8"
             >
               <h3 className="font-mono text-sm text-accent-warm mb-2">{p.title}</h3>
               <p className="text-sm text-text-dim leading-relaxed">{p.body}</p>
-            </SpotlightCard>
+            </div>
           ))}
         </StaggerReveal>
       </div>
 
       <div className="mt-14">
-        <h2 className="font-mono text-xl font-semibold text-text mb-6">Focus areas</h2>
-        <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" stagger={60}>
+        <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-6">Focus areas</h2>
+        <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6" stagger={60}>
           {skillGroups.map((group) => {
-            const Icon = skillIcons[group.name];
             return (
-              <SpotlightCard
+              <div
                 key={group.name}
-                color="rgba(242, 184, 75, 0.1)"
-                className="card-hover rounded-lg border border-border bg-surface p-6 sm:p-8"
+                className="skill-item"
               >
-                <div className="flex items-center gap-2.5 mb-2">
-                  {Icon && <Icon className="w-5 h-5 text-accent-warm" />}
-                  <p className="font-mono text-base text-text">{group.name}</p>
+                <div className="mb-4">
+                  <span className="font-mono text-xs text-accent-dim">{String(skillGroups.indexOf(group) + 1).padStart(2, "0")}</span>
+                  <p className="display-face text-xl font-bold text-text leading-none mt-2">{group.name}</p>
                 </div>
                 <p className="text-sm text-text-dim leading-relaxed">{group.items.join(" \u00b7 ")}</p>
-              </SpotlightCard>
+              </div>
             );
           })}
         </StaggerReveal>
@@ -102,7 +113,7 @@ export default function About() {
       <div className="mt-14 flex flex-wrap gap-3">
         <Link
           href="/projects"
-          className="rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+          className="rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-text hover:opacity-90 transition-opacity"
         >
           View the Project Log
         </Link>

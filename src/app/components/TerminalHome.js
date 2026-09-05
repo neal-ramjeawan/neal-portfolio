@@ -91,51 +91,53 @@ export default function TerminalHome() {
   };
 
   return (
-    <div className="flex-1 flex flex-col min-h-screen bg-bg">
+    <div className="flex-1 min-h-screen bg-bg">
       <div className="flex items-center justify-between border-b border-border px-6 py-4">
-        <span className="font-mono text-xs text-text-faint">neal@portfolio:~ — power-user mode</span>
+        <span className="font-mono text-xs text-accent-dim">neal@portfolio:~ <span className="text-text-faint">/ power-user mode</span></span>
         <button
           type="button"
           onClick={() => setMode("site")}
-          className="font-mono text-xs text-text-dim hover:text-accent-warm border border-border rounded-md px-3 py-1.5 transition-colors"
+          className="font-mono text-xs text-text-dim hover:text-accent-warm border border-border px-3 py-1.5 transition-colors"
         >
           ← site view
         </button>
       </div>
 
-      <div
-        ref={scrollRef}
-        onClick={() => inputRef.current?.focus()}
-        className="flex-1 overflow-y-auto px-6 py-6 font-mono text-sm space-y-1 max-w-3xl w-full mx-auto"
-      >
-        {lines.map((line, i) => (
-          <div
-            key={i}
-            className={`whitespace-pre-wrap flex items-center gap-1.5 ${toneClass[line.tone] ?? "text-text-dim"}`}
-          >
-            <span>{line.text || "\u00a0"}</span>
-            {line.copyValue && <CopyButton value={line.copyValue} label={`Copy ${line.copyValue}`} />}
-          </div>
-        ))}
-      </div>
+      <div className="max-w-4xl mx-auto w-full px-6 py-10 sm:py-16">
+        <div
+          ref={scrollRef}
+          onClick={() => inputRef.current?.focus()}
+          className="max-h-[60vh] overflow-y-auto font-mono text-sm leading-relaxed space-y-1"
+        >
+          {lines.map((line, i) => (
+            <div
+              key={i}
+              className={`whitespace-pre-wrap flex items-center gap-1.5 ${toneClass[line.tone] ?? "text-text-dim"}`}
+            >
+              <span>{line.text || "\u00a0"}</span>
+              {line.copyValue && <CopyButton value={line.copyValue} label={`Copy ${line.copyValue}`} />}
+            </div>
+          ))}
+        </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex items-center gap-2 border-t border-border px-6 py-4 max-w-3xl w-full mx-auto"
-      >
-        <span className="font-mono text-sm text-accent-warm">$</span>
-        <input
-          ref={inputRef}
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          spellCheck={false}
-          autoComplete="off"
-          placeholder="type a command..."
-          className="flex-1 bg-transparent font-mono text-sm text-text placeholder:text-text-faint outline-none"
-        />
-      </form>
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 flex items-center gap-3 border border-border-strong bg-surface px-4 py-3 max-w-3xl"
+        >
+          <span className="font-mono text-sm text-accent-warm">$</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            spellCheck={false}
+            autoComplete="off"
+            placeholder="type a command..."
+            className="flex-1 bg-transparent font-mono text-sm text-text placeholder:text-text-faint outline-none"
+          />
+        </form>
+      </div>
     </div>
   );
 }

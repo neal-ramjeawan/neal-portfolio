@@ -82,7 +82,6 @@ export default function TypewriterRoles() {
       <span className="sr-only">{ROLES.join(", ")}</span>
       <span aria-hidden="true" className="inline-flex items-baseline">
         {text}
-        <span className="ml-0.5 inline-block w-[2px] h-[1em] bg-accent-warm animate-pulse" />
       </span>
     </>
   );
