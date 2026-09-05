@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ScrollProgress from "./components/ScrollProgress";
 import ViewModeGate from "./components/ViewModeGate";
+import { ThemeModeProvider } from "./context/ThemeMode";
 import { site } from "./data/site";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -47,7 +48,9 @@ export default function RootLayout({ children }) {
     >
       <body className="bg-bg text-text antialiased min-h-screen flex flex-col">
         <ScrollProgress />
-        <ViewModeGate>{children}</ViewModeGate>
+        <ThemeModeProvider>
+          <ViewModeGate>{children}</ViewModeGate>
+        </ThemeModeProvider>
         <Analytics />
       </body>
     </html>
