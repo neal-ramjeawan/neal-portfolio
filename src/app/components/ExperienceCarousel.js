@@ -6,7 +6,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
 
 export default function ExperienceCarousel({ roles }) {
   const [index, setIndex] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [dragging, setDragging] = useState(false);
   const pausedRef = useRef(false);
+  const viewportRef = useRef(null);
+  const dragRef = useRef({ startX: 0, startY: 0, axis: null });
 
   useEffect(() => {
     if (roles.length <= 1) return;
@@ -23,15 +27,68 @@ export default function ExperienceCarousel({ roles }) {
 
   const goTo = (i) => setIndex(((i % roles.length) + roles.length) % roles.length);
 
+  function handlePointerDown(event) {
+    if (roles.length <= 1) return;
+    dragRef.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      axis: null,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function handlePointerMove(event) {
+    const drag = dragRef.current;
+    if (!drag.startX) return;
+
+    const deltaX = event.clientX - drag.startX;
+    const deltaY = event.clientY - drag.startY;
+
+    if (!drag.axis) {
+      if (Math.abs(deltaX) < 6 && Math.abs(deltaY) < 6) return;
+      drag.axis = Math.abs(deltaX) > Math.abs(deltaY) ? "horizontal" : "vertical";
+    }
+
+    if (drag.axis !== "horizontal") return;
+    event.preventDefault();
+    setDragging(true);
+    setDragOffset(deltaX);
+  }
+
+  function handlePointerUp(event) {
+    const drag = dragRef.current;
+    if (drag.axis === "horizontal") {
+      const width = viewportRef.current?.clientWidth ?? 1;
+      const threshold = Math.min(120, width * 0.2);
+      if (Math.abs(dragOffset) >= threshold) {
+        goTo(index + (dragOffset < 0 ? 1 : -1));
+      }
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    dragRef.current = { startX: 0, startY: 0, axis: null };
+    setDragOffset(0);
+    setDragging(false);
+  }
+
   return (
     <div
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
     >
-      <div className="overflow-hidden">
+      <div
+        ref={viewportRef}
+        className="overflow-hidden touch-pan-y"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
         <div
-          className="flex transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(-${index * 100}%)` }}
+          className={`flex ${dragging ? "" : "transition-transform duration-500 ease-out"}`}
+          style={{ transform: `translateX(calc(-${index * 100}% + ${dragOffset}px))` }}
         >
           {roles.map((role) => (
             <div key={role.company} className="w-full flex-shrink-0 px-0.5">

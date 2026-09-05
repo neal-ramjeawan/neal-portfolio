@@ -45,7 +45,7 @@ export default function Home() {
                 width={520}
                 height={520}
                 priority
-                className="portrait-image w-full max-w-[19rem]"
+                className="portrait-image portrait-entrance w-full max-w-[19rem]"
               />
               <UptimeCounter />
             </div>
