@@ -1,68 +1,37 @@
-// Resolved gets the warm accent (the "achievement" color), Monitoring
-// gets teal (the "actively watched" color). Featured projects get a
-// tinted border + glow to match; everything else stays plain.
 const STATUS_MAP = {
   resolved: {
     label: "Resolved",
-    dot: "bg-accent-warm",
-    text: "text-accent-warm",
-    ring: "border-accent-warm/40",
-    glow: "shadow-[0_0_60px_-18px_rgba(242,184,75,0.4)]",
-    sweep: "rgba(242, 184, 75, 0.55)",
+    text: "text-accent-dim",
   },
   monitoring: {
     label: "Monitoring",
-    dot: "bg-accent status-pulse",
-    text: "text-accent",
-    ring: "border-accent/40",
-    glow: "shadow-[0_0_60px_-18px_rgba(0,173,181,0.35)]",
-    sweep: "rgba(0, 173, 181, 0.55)",
+    text: "text-accent-dim",
   },
   "in-progress": {
     label: "In progress",
     dot: "bg-text-faint",
     text: "text-text-dim",
-    ring: "",
-    glow: "",
   },
 };
 
 export default function ProjectCard({ project }) {
   const status = STATUS_MAP[project.status] ?? STATUS_MAP["in-progress"];
-  const highlighted = Boolean(status.ring);
-
-  const borderClass = highlighted
-    ? status.ring
-    : "border-border hover:border-border-strong";
-
-  const glowClass = highlighted ? status.glow : "";
-  const sweepClass = highlighted ? "border-sweep" : "";
 
   return (
     <article
       id={project.slug}
-      className={`card-hover scroll-mt-24 rounded-lg border bg-surface p-6 sm:p-8 ${borderClass} ${glowClass} ${sweepClass}`}
-      style={highlighted ? { "--sweep-color": status.sweep } : undefined}
+      className="scroll-mt-24 border-t border-border bg-transparent py-8 sm:py-10 md:grid md:grid-cols-[11rem_1fr] md:gap-x-10"
     >
       {/* STATUS + REPOSITORY */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <div className="flex items-center gap-2 font-mono text-xs">
-          <span
-            className={`inline-block h-1.5 w-1.5 rounded-full ${status.dot}`}
-            style={
-              project.status === "monitoring"
-                ? { "--pulse-color": "rgba(0, 173, 181, 0.45)" }
-                : undefined
-            }
-          />
-          <span className={status.text}>{status.label}</span>
-        </div>
+      <div className="mb-6 md:mb-0">
+        <p className="font-mono text-sm uppercase tracking-wide text-text-faint">Project</p>
+        <p className={`mt-2 font-mono text-sm ${status.text}`}>{status.label}</p>
 
         <a
           href={`https://github.com/${project.repo}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1 font-mono text-xs text-text-dim hover:text-accent-warm transition-colors"
+          className="group mt-5 inline-flex items-start gap-1 font-mono text-sm text-text-dim hover:text-accent-warm transition-colors"
         >
           <span>{project.repo}</span>
           <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
@@ -71,29 +40,30 @@ export default function ProjectCard({ project }) {
         </a>
       </div>
 
-      {/* TITLE */}
-      <h3 className="font-mono text-lg sm:text-xl font-semibold text-text mb-5">
-        {project.title}
-      </h3>
+      <div className="md:col-span-1">
+        {/* TITLE */}
+        <h3 className="display-face text-3xl sm:text-4xl font-bold text-text mb-6">
+          {project.title}
+        </h3>
 
       {/* PROJECT DETAILS */}
-      <dl className="space-y-4 text-sm leading-relaxed">
+      <dl className="space-y-5 text-base leading-relaxed">
         <div>
-          <dt className="font-mono text-xs uppercase tracking-wide text-text-faint mb-1">
+          <dt className="font-mono text-sm uppercase tracking-wide text-text-faint mb-1">
             Problem
           </dt>
           <dd className="text-text-dim">{project.problem}</dd>
         </div>
 
         <div>
-          <dt className="font-mono text-xs uppercase tracking-wide text-text-faint mb-1">
+          <dt className="font-mono text-sm uppercase tracking-wide text-text-faint mb-1">
             Response
           </dt>
           <dd className="text-text-dim">{project.response}</dd>
         </div>
 
         <div>
-          <dt className="font-mono text-xs uppercase tracking-wide text-text-faint mb-1">
+          <dt className="font-mono text-sm uppercase tracking-wide text-text-faint mb-1">
             Result
           </dt>
           <dd className="text-text-dim">{project.result}</dd>
@@ -107,23 +77,21 @@ export default function ProjectCard({ project }) {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md bg-accent-warm px-3.5 py-2 font-mono text-xs font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            className="inline-flex items-center gap-1.5 rounded-md bg-accent-warm px-3.5 py-2 font-mono text-xs font-medium text-text hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
           >
             View live demo &rarr;
           </a>
         </div>
       )}
 
-      {/* TECHNOLOGY STACK */}
-      <div className="flex flex-wrap gap-2 mt-6">
-        {project.stack.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-full border border-border-strong px-2.5 py-1 font-mono text-[11px] text-text-dim"
-          >
-            {tech}
-          </span>
-        ))}
+        {/* TECHNOLOGY STACK */}
+        <div className="flex flex-wrap gap-x-4 gap-y-2 mt-7">
+          {project.stack.map((tech) => (
+            <span key={tech} className="font-mono text-xs text-text-dim">
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
     </article>
   );

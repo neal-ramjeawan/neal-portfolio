@@ -1,89 +1,54 @@
 import Link from "next/link";
+import Image from "next/image";
 import UptimeCounter from "./components/UptimeCounter";
 import ProjectCard from "./components/ProjectCard";
-import NetworkGraphic from "./components/NetworkGraphic";
 import Reveal from "./components/Reveal";
 import StaggerReveal from "./components/StaggerReveal";
-import SpotlightCard from "./components/SpotlightCard";
 import TypewriterRoles from "./components/TypewriterRoles";
-import CountUp from "./components/CountUp";
 import ExperienceCarousel from "./components/ExperienceCarousel";
-import { DownloadIcon, CodeIcon, MailIcon, skillIcons } from "./components/icons";
 import { skillGroups } from "./data/skills";
-import { featuredProjects, projects } from "./data/projects";
+import { featuredProjects } from "./data/projects";
 import { experience } from "./data/experience";
 import { contact } from "./data/contact";
-
-// Both numbers below are derived from the actual project data rather
-// than hardcoded, so they can't silently drift out of sync with it
-// the way the old "500 failed requests" stat did.
-const METRICS = [
-  {
-    to: new Set(projects.flatMap((p) => p.stack)).size,
-    suffix: "",
-    label: "Distinct technologies across the portfolio",
-  },
-  {
-    to: projects.length,
-    suffix: "",
-    label: "Portfolio projects shipped or in flight",
-  },
-];
 
 export default function Home() {
   return (
     <main>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <NetworkGraphic
-          className="animate-fade-in [animation-delay:0.3s] pointer-events-none absolute opacity-25 sm:opacity-35 lg:opacity-100 w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[520px] lg:h-[520px] bottom-[-70px] right-[-70px] lg:bottom-auto lg:top-1/2 lg:right-[-40px] lg:-translate-y-1/2"
-        />
-
-        <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 sm:py-28">
-          <h1 className="animate-fade-up font-mono text-4xl sm:text-6xl font-bold tracking-tight text-text">
-            Neal Ramjeawan
-          </h1>
-
-          <p className="animate-fade-up [animation-delay:0.08s] mt-4 font-mono text-lg sm:text-xl text-text-dim">
-            <TypewriterRoles />
-          </p>
-
-          <p className="animate-fade-up [animation-delay:0.16s] mt-6 max-w-2xl text-text-dim leading-relaxed">
-            I design, automate, and stress-test infrastructure across cloud and
-            hybrid environments &mdash; then prove it holds up. Every project
-            below has been built, broken on purpose, and fixed before it went on
-            this page.
-          </p>
-
-          <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-3">
-            <a
-              href={contact.resumeHref}
-              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-4 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-            >
-              <DownloadIcon className="w-4 h-4" />
-              Download r&eacute;sum&eacute;
-            </a>
-
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
-            >
-              <CodeIcon className="w-4 h-4" />
-              GitHub
-            </a>
-
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 rounded-md border border-border-strong px-4 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
-            >
-              View deployment log &rarr;
-            </Link>
-          </div>
-
-          <div className="animate-fade-up [animation-delay:0.32s] mt-10 max-w-xs">
-            <UptimeCounter />
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-36">
+          <div className="grid lg:grid-cols-[1fr_18rem] gap-12 items-end">
+            <div>
+              <p className="animate-fade-up eyebrow mb-5">Cloud platform / DevOps / SRE</p>
+              <h1 className="animate-fade-up display-face max-w-5xl text-5xl sm:text-7xl lg:text-8xl font-bold leading-[0.98] text-text">
+                I build infrastructure that holds up.
+              </h1>
+              <p className="animate-fade-up [animation-delay:0.08s] mt-7 font-mono text-sm sm:text-base text-accent-dim">
+                <TypewriterRoles />
+              </p>
+              <p className="animate-fade-up [animation-delay:0.16s] mt-8 max-w-2xl text-lg sm:text-xl text-text-dim leading-relaxed">
+                I design, automate, and stress-test infrastructure across cloud and
+                hybrid environments &mdash; then prove it holds up. Every project
+                below has been built, broken on purpose, and fixed before it went on
+                this page.
+              </p>
+              <div className="animate-fade-up [animation-delay:0.24s] mt-9 flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm">
+                <a href={contact.resumeHref} className="marker-link">Download r&eacute;sum&eacute;</a>
+                <a href={contact.github} target="_blank" rel="noopener noreferrer" className="marker-link">GitHub</a>
+                <Link href="/projects" className="marker-link">View deployment log</Link>
+              </div>
+            </div>
+            <div className="animate-fade-up [animation-delay:0.32s] flex flex-col items-center gap-8 lg:-translate-y-32">
+              <Image
+                src="/portrait.png"
+                alt="Neal Ramjeawan"
+                width={520}
+                height={520}
+                priority
+                className="portrait-image w-full max-w-[19rem]"
+              />
+              <UptimeCounter />
+            </div>
           </div>
         </div>
 
@@ -92,12 +57,12 @@ export default function Home() {
 
       {/* EXPERIENCE */}
       <section>
-        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-          <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+        <Reveal className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
+          <p className="eyebrow mb-2">
             Experience
           </p>
 
-          <h2 className="font-mono text-2xl font-semibold text-text mb-10">
+          <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-10">
             Where I&apos;ve worked
           </h2>
 
@@ -106,7 +71,7 @@ export default function Home() {
           <div className="mt-8 text-center">
             <Link
               href="/about#experience"
-              className="font-mono text-sm text-accent-warm hover:underline"
+              className="marker-link font-mono text-sm"
             >
               Full work history &rarr;
             </Link>
@@ -118,39 +83,31 @@ export default function Home() {
 
       {/* COMPONENTS / SKILLS */}
       <section>
-        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-          <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+        <Reveal className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
+          <p className="eyebrow mb-2">
             Components
           </p>
 
-          <h2 className="font-mono text-2xl font-semibold text-text mb-10">
+          <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-10">
             Everything currently in service
           </h2>
 
-          <StaggerReveal className="grid sm:grid-cols-2 gap-4" stagger={70}>
+          <StaggerReveal className="grid sm:grid-cols-2 gap-x-12" stagger={70}>
             {skillGroups.map((group) => {
-              const Icon = skillIcons[group.name];
-
               return (
-                <SpotlightCard
+                <div
                   key={group.name}
-                  color="rgba(242, 184, 75, 0.12)"
-                  className="card-hover rounded-lg border border-accent-warm/25 bg-surface p-5 shadow-[0_0_40px_-20px_rgba(242,184,75,0.35)]"
+                  className="skill-item"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    {Icon && (
-                      <Icon className="w-4 h-4 text-accent-warm" />
-                    )}
-
-                    <span className="font-mono text-sm text-text">
-                      {group.name}
-                    </span>
+                  <div className="mb-4">
+                    <span className="font-mono text-xs text-accent-dim">0{skillGroups.indexOf(group) + 1}</span>
+                    <h3 className="display-face text-2xl font-bold text-text leading-none mt-2">{group.name}</h3>
                   </div>
 
                   <p className="text-sm text-text-dim leading-relaxed">
                     {group.items.join(" \u00b7 ")}
                   </p>
-                </SpotlightCard>
+                </div>
               );
             })}
           </StaggerReveal>
@@ -161,12 +118,12 @@ export default function Home() {
 
       {/* DEPLOYMENT LOG (FEATURED PROJECTS) */}
       <section>
-        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-          <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+        <Reveal className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
+          <p className="eyebrow mb-2">
             Deployment log
           </p>
 
-          <h2 className="font-mono text-2xl font-semibold text-text mb-10">
+          <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-10">
             Recent changes
           </h2>
 
@@ -182,7 +139,7 @@ export default function Home() {
           <div className="mt-10">
             <Link
               href="/projects"
-              className="font-mono text-sm text-accent-warm hover:underline"
+              className="marker-link font-mono text-sm"
             >
               View the full deployment log &rarr;
             </Link>
@@ -192,39 +149,14 @@ export default function Home() {
         <div className="section-divider" />
       </section>
 
-      {/* METRICS */}
-      <section>
-        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-          <div className="grid grid-cols-2 gap-8 max-w-lg mx-auto">
-            {METRICS.map((metric) => (
-              <div key={metric.label}>
-                <p className="font-mono text-3xl font-bold text-text">
-                  <CountUp
-                    to={metric.to}
-                    prefix={metric.prefix}
-                    suffix={metric.suffix}
-                  />
-                </p>
-
-                <p className="mt-1 text-sm text-text-dim">
-                  {metric.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <div className="section-divider" />
-      </section>
-
       {/* CONTACT CTA */}
       <section>
-        <Reveal className="max-w-5xl mx-auto px-6 py-16 sm:py-20 text-center">
-          <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+        <Reveal className="max-w-5xl mx-auto px-6 py-24 sm:py-32 text-center">
+          <p className="eyebrow mb-2">
             Get in touch
           </p>
 
-          <h2 className="font-mono text-2xl sm:text-3xl font-semibold text-text mb-4">
+          <h2 className="display-face text-4xl sm:text-5xl font-bold text-text mb-4">
             Open to Cloud, DevOps &amp; SRE roles
           </h2>
 
@@ -236,15 +168,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href={`mailto:${contact.email}`}
-              className="inline-flex items-center gap-2 rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="marker-link font-mono text-sm"
             >
-              <MailIcon className="w-4 h-4" />
               Email me
             </a>
 
             <Link
               href="/contact"
-              className="rounded-md border border-border-strong px-5 py-2.5 font-mono text-sm text-text hover:bg-surface transition-colors"
+              className="marker-link font-mono text-sm"
             >
               All contact options
             </Link>

@@ -40,7 +40,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${jetbrainsMono.variable} ${inter.variable}`}
+    >
       <body className="bg-bg text-text antialiased min-h-screen flex flex-col">
         <ScrollProgress />
         <ViewModeGate>{children}</ViewModeGate>

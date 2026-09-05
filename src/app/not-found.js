@@ -12,7 +12,7 @@ export default function NotFound() {
         404 &middot; Not Found
       </div>
 
-      <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-4">
+      <h1 className="display-face text-5xl sm:text-6xl font-bold text-text mb-4">
         This route isn&apos;t deployed
       </h1>
 
@@ -25,7 +25,7 @@ export default function NotFound() {
       <div className="flex flex-wrap justify-center gap-3">
         <Link
           href="/"
-          className="rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-bg hover:opacity-90 transition-opacity"
+          className="rounded-md bg-accent-warm px-5 py-2.5 font-mono text-sm font-medium text-text hover:opacity-90 transition-opacity"
         >
           Back to home
         </Link>

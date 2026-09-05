@@ -19,16 +19,14 @@ export default function Navbar() {
   const { setMode } = useViewMode();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg/85 backdrop-blur">
-      <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 group" onClick={() => setOpen(false)}>
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-warm">
-            <span className="font-mono text-[11px] font-bold text-bg">NR</span>
-          </span>
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/90 backdrop-blur">
+      <nav className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <Link href="/" className="group" onClick={() => setOpen(false)}>
+          <span className="display-face text-xl font-bold tracking-tight">Neal Ramjeawan</span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden sm:flex items-center gap-1 font-mono text-sm">
+        <div className="hidden sm:flex items-center gap-6 font-mono text-xs uppercase tracking-wider">
           {LINKS.map((link) => {
             const active = pathname === link.href;
             return (
@@ -37,7 +35,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3 py-1.5 rounded-md transition-colors ${
                   active
-                    ? "text-accent-warm"
+                    ? "marker-link text-text"
                     : "text-text-dim hover:text-text"
                 }`}
               >
@@ -50,7 +48,7 @@ export default function Navbar() {
         {/* Mode toggle + mobile toggle */}
         <div className="flex items-center gap-2">
           <div
-            className="hidden sm:flex items-center gap-0.5 rounded-md border border-border p-0.5 font-mono text-xs"
+            className="hidden sm:flex items-center gap-0.5 border-l border-border pl-4 font-mono text-xs"
             role="group"
             aria-label="Site view mode"
           >
@@ -61,10 +59,10 @@ export default function Navbar() {
               type="button"
               onClick={() => setMode("terminal")}
               title="Switch to terminal mode — power-user view"
-              className="flex items-center gap-1 px-2.5 py-1 rounded text-text-dim hover:text-text transition-colors"
+              className="flex items-center gap-1 px-2 py-1 text-text-dim hover:text-text transition-colors"
             >
               <TerminalIcon className="w-3.5 h-3.5" />
-              term
+              terminal
             </button>
           </div>
 
@@ -73,7 +71,7 @@ export default function Navbar() {
             onClick={() => setMode("terminal")}
             aria-label="Switch to terminal mode"
             title="Switch to terminal mode"
-            className="sm:hidden text-text-dim hover:text-accent-warm border border-border rounded-md p-1.5 transition-colors"
+            className="sm:hidden text-text-dim hover:text-accent-warm border border-border p-1.5 transition-colors"
           >
             <TerminalIcon className="w-4 h-4" />
           </button>
@@ -83,7 +81,7 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Toggle navigation menu"
-            className="sm:hidden font-mono text-text-dim hover:text-text border border-border rounded-md px-3 py-1.5"
+            className="sm:hidden font-mono text-text-dim hover:text-text border border-border px-3 py-1.5"
           >
             {open ? "close" : "menu"}
           </button>

@@ -26,25 +26,24 @@ const CHANNELS = [
 
 export default function Contact() {
   return (
-    <main className="max-w-2xl mx-auto px-6 py-16 sm:py-20">
-      <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
-        Contact
-      </p>
+    <main className="max-w-6xl mx-auto px-6 py-20 sm:py-28">
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(20rem,30rem)] gap-14 lg:gap-24 items-start">
+        <div>
+          <p className="eyebrow mb-4">Contact</p>
+          <h1 className="display-face text-5xl sm:text-7xl font-bold text-text mb-5">
+            Let&apos;s talk
+          </h1>
+          <p className="max-w-md text-lg text-text-dim leading-relaxed">
+            Open to Cloud Platform Engineer, DevOps, and SRE roles. The
+            fastest way to reach me is email.
+          </p>
+        </div>
 
-      <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-4">
-        Let&apos;s talk
-      </h1>
-
-      <p className="text-text-dim leading-relaxed mb-10">
-        Open to Cloud Platform Engineer, DevOps, and SRE roles. The
-        fastest way to reach me is email.
-      </p>
-
-      <div className="space-y-3">
+        <div className="border-t border-border">
         {CHANNELS.map((c) => (
           <div
             key={c.label}
-            className="card-hover flex items-center gap-3 rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors"
+            className="flex items-center gap-3 border-b border-border px-1 py-5"
           >
             <a
               href={c.href}
@@ -56,7 +55,7 @@ export default function Contact() {
                 {c.label}
               </span>
 
-              <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
+              <span className="font-mono text-sm text-text group-hover:text-accent transition-colors">
                 {c.value}
               </span>
             </a>
@@ -69,16 +68,17 @@ export default function Contact() {
           href={contact.resumeHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="card-hover flex items-center justify-between rounded-lg border border-border bg-surface px-5 py-4 hover:border-border-strong hover:bg-surface-hover transition-colors group"
+          className="flex items-center justify-between border-b border-border px-1 py-5 group"
         >
           <span className="font-mono text-xs uppercase tracking-wide text-text-faint">
             R&eacute;sum&eacute;
           </span>
 
-          <span className="font-mono text-sm text-text group-hover:text-accent-warm transition-colors">
+          <span className="font-mono text-sm text-text group-hover:text-accent transition-colors">
             Download PDF
           </span>
         </a>
+        </div>
       </div>
     </main>
   );

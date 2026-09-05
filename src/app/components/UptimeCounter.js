@@ -29,7 +29,7 @@ export default function UptimeCounter() {
   }, []);
 
   return (
-    <div className="rounded-lg border border-border bg-surface px-4 py-3">
+    <div className="border-t border-border px-1 py-3 text-center">
       <p className="font-mono text-[11px] uppercase tracking-wide text-text-faint mb-1">
         In the field
       </p>

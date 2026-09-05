@@ -2,6 +2,7 @@ import { site } from "../data/site";
 import { contact } from "../data/contact";
 import { experience } from "../data/experience";
 import { projects } from "../data/projects";
+import { skillGroups } from "../data/skills";
 
 const STATUS_LABEL = {
   resolved: "resolved",
@@ -35,8 +36,15 @@ export function runTerminalCommand(raw, context = {}) {
   switch (cmd) {
     case "help": {
       print("whoami            short bio");
+      print("about             detailed bio");
       print("experience        work history (alias: history)");
+      print("timeline          work history with dates");
       print("projects          list everything shipped (alias: ls)");
+      print("read <slug>       read a project's case study");
+      print("search <term>     find projects and technologies");
+      print("random            open a random project");
+      print("skills            list skills by category");
+      print("stack             list every technology used");
       print("status            deployment-log style summary");
       print("open <slug>       jump to a project, e.g. open zwazo");
       print("resume            download the CV (alias: cat resume)");
@@ -56,12 +64,39 @@ export function runTerminalCommand(raw, context = {}) {
       break;
     }
 
+    case "about": {
+      print(site.title, "accent");
+      print("Cloud and Platform Engineer focused on infrastructure that holds up under real conditions.");
+      print("Focus: cloud infrastructure, DevOps practice, and site reliability engineering.");
+      break;
+    }
+
     case "history":
     case "experience": {
       experience.forEach((role) => {
         print(`${role.company} — ${role.title}`, "accent");
         print(`  ${role.dates}`);
       });
+      break;
+    }
+
+    case "timeline": {
+      experience.forEach((role) => print(`${role.dates}  ${role.company} — ${role.title}`, "accent"));
+      break;
+    }
+
+    case "skills": {
+      skillGroups.forEach((group) => {
+        print(group.name, "accent");
+        print(`  ${group.items.join(" · ")}`);
+      });
+      break;
+    }
+
+    case "stack": {
+      const stack = [...new Set(projects.flatMap((project) => project.stack))].sort();
+      print(stack.join(" · "), "accent");
+      print(`${stack.length} distinct technologies across ${projects.length} projects.`);
       break;
     }
 
@@ -91,6 +126,24 @@ export function runTerminalCommand(raw, context = {}) {
       break;
     }
 
+    case "uptime": {
+      const careerStart = new Date("2019-12-01T00:00:00Z");
+      const years = ((Date.now() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000)).toFixed(1);
+      print(`${years} years in the field`, "accent");
+      print("Since December 2019.");
+      break;
+    }
+
+    case "tree": {
+      print("neal-portfolio/", "accent");
+      print("├── about/");
+      print("├── contact/");
+      print("├── projects/");
+      print("├── experience/");
+      print("└── terminal/");
+      break;
+    }
+
     case "open": {
       const match = projects.find((p) => p.slug === arg);
       if (!match) {
@@ -100,6 +153,57 @@ export function runTerminalCommand(raw, context = {}) {
       }
       print(`→ opening ${match.slug}...`, "accent");
       action = { type: "navigate", href: `/projects#${match.slug}` };
+      break;
+    }
+
+    case "read": {
+      const match = projects.find((p) => p.slug === arg);
+      if (!match) {
+        print(`no project matching '${arg}'`, "error");
+        print(`try: ${projects.map((p) => p.slug).join(", ")}`);
+        break;
+      }
+      print(match.title, "accent");
+      print(`problem  ${match.problem}`);
+      print(`response ${match.response}`);
+      print(`result   ${match.result}`);
+      break;
+    }
+
+    case "search": {
+      if (!arg) {
+        print("usage: search <term>", "error");
+        break;
+      }
+      const term = arg.toLowerCase();
+      const matches = projects.filter((project) =>
+        [project.title, project.problem, project.response, project.result, ...project.stack]
+          .join(" ")
+          .toLowerCase()
+          .includes(term)
+      );
+      if (!matches.length) {
+        print(`no matches for '${arg}'`, "error");
+        break;
+      }
+      matches.forEach((project) => print(`${project.slug} — ${project.title}`, "accent"));
+      break;
+    }
+
+    case "neofetch": {
+      print("neal@portfolio", "accent");
+      print("─────────────");
+      print("role       Cloud Platform / DevOps / SRE");
+      print(`projects   ${projects.length}`);
+      print(`stack      ${new Set(projects.flatMap((project) => project.stack)).size} technologies`);
+      print("runtime    Next.js / React");
+      break;
+    }
+
+    case "random": {
+      const project = projects[Math.floor(Math.random() * projects.length)];
+      print(`→ opening ${project.slug}...`, "accent");
+      action = { type: "navigate", href: `/projects#${project.slug}` };
       break;
     }
 

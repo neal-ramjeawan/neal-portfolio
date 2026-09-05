@@ -10,11 +10,11 @@ export const metadata = {
 
 export default function Projects() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
-      <p className="font-mono text-xs uppercase tracking-widest text-text-faint mb-2">
+    <main className="max-w-6xl mx-auto px-6 py-20 sm:py-28">
+      <p className="eyebrow mb-4">
         Project Log
       </p>
-      <h1 className="font-mono text-3xl sm:text-4xl font-bold text-text mb-4">
+      <h1 className="display-face text-5xl sm:text-7xl font-bold text-text mb-5">
         Every project, start to finish
       </h1>
       <p className="text-text-dim max-w-2xl mb-12 leading-relaxed">
