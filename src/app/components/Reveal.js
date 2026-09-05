@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 // Fades content up once it scrolls into view. Respects reduced-motion
-// via the global CSS rule that zeroes animation-duration — the reveal
+// via the global CSS rule that zeroes animation-duration - the reveal
 // still happens (content becomes visible), just without the motion.
 export default function Reveal({ children, className = "" }) {
   const ref = useRef(null);

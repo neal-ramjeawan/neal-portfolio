@@ -69,7 +69,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMode("terminal")}
-              title="Switch to terminal mode — power-user view"
+              title="Switch to terminal mode - power-user view"
               className="flex items-center gap-1 px-2 py-1 text-text-dim hover:text-text transition-colors"
             >
               <TerminalIcon className="w-3.5 h-3.5" />
@@ -99,7 +99,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile panel — stays mounted so it can transition open/closed
+      {/* Mobile panel - stays mounted so it can transition open/closed
           instead of popping in abruptly (every other interactive
           element on the site now has motion; this was the one that
           didn't). Uses the grid-rows trick to animate height without

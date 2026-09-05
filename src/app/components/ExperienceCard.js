@@ -2,9 +2,9 @@
 
 import { useRef } from "react";
 
-// Shared card content for one role — used by the About page's timeline
+// Shared card content for one role - used by the About page's timeline
 // and the homepage carousel, so both stay in sync automatically. Tilts
-// gently toward the cursor (max ~3.5deg) — subtle enough to feel alive
+// gently toward the cursor (max ~3.5deg) - subtle enough to feel alive
 // without distracting from the text.
 export default function ExperienceCard({ role }) {
   const ref = useRef(null);

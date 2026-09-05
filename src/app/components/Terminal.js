@@ -7,13 +7,13 @@ import { runTerminalCommand } from "../lib/terminalCommands";
 import CopyButton from "./CopyButton";
 
 const WELCOME = [
-  { text: `${site.name} — interactive shell` },
+  { text: `${site.name} - interactive shell` },
   { text: "Type 'help' to see what's available. Esc to close." },
 ];
 
 // Quick command palette, summoned from any page via Ctrl/Cmd+K or the
 // navbar icon. Shares its command set with TerminalHome (full-page
-// mode) via lib/terminalCommands — this component only owns the
+// mode) via lib/terminalCommands - this component only owns the
 // overlay chrome and how actions (navigate/download/close) get
 // carried out in a modal context.
 export default function Terminal() {
@@ -63,7 +63,7 @@ export default function Terminal() {
     const trimmed = value.trim();
     if (!trimmed) return;
 
-    // canSwitchMode is false here — full terminal mode is a deliberate
+    // canSwitchMode is false here - full terminal mode is a deliberate
     // toggle in the navbar, not something typed into the quick palette.
     const { lines: resultLines, action } = runTerminalCommand(trimmed, {
       canSwitchMode: false,

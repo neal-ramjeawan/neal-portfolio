@@ -17,14 +17,14 @@ function getSnapshot() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-// Always "false" during SSR — matchMedia doesn't exist on the server.
+// Always "false" during SSR - matchMedia doesn't exist on the server.
 // useSyncExternalStore reconciles this with the real client value on
 // hydration, the same pattern used by the ViewMode context.
 function getServerSnapshot() {
   return false;
 }
 
-// Types out each role, pauses, erases, moves to the next — and stops on
+// Types out each role, pauses, erases, moves to the next - and stops on
 // the last one rather than looping forever. Runs once per page load.
 // A screen-reader-only span always carries the full, final text so
 // assistive tech isn't read a stream of partial words as it types.
@@ -60,7 +60,7 @@ export default function TypewriterRoles() {
         }
       }
 
-      // Final phase: type out the full joined list and stop there —
+      // Final phase: type out the full joined list and stop there -
       // same end state the reduced-motion fallback shows immediately.
       const full = ROLES.join(" \u00b7 ");
       for (let c = 1; c <= full.length; c++) {

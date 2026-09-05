@@ -8,7 +8,7 @@ import { runTerminalCommand } from "../lib/terminalCommands";
 import CopyButton from "./CopyButton";
 
 const WELCOME = [
-  { text: `${site.name} — power-user mode`, tone: "accent" },
+  { text: `${site.name} - power-user mode`, tone: "accent" },
   { text: "Everything on this site is reachable from here. Type 'help' to start." },
   { text: "Prefer scrolling? Type 'site', or use the toggle above." },
 ];

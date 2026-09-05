@@ -1,4 +1,4 @@
-// Central site config — used by layout metadata, the OG image,
+// Central site config - used by layout metadata, the OG image,
 // sitemap, and robots.txt, so the domain only needs updating here.
 // TODO(Neal): replace with my real deployed domain (no trailing slash).
 
